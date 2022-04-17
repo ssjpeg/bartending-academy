@@ -1,0 +1,13 @@
+#navBorder{
+  border: thin solid black;
+}
+
+#centerText{
+  margin: auto;
+}
+
+#titleFont{
+  font-size: 18px;
+  margin: auto;
+
+}
