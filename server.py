@@ -4,12 +4,38 @@ from flask import render_template
 from flask import Response, request, jsonify
 app = Flask(__name__)
 
+quiz_answers = [
+    {
+        "id": "1",
+        "answer": "Measuring Alcohol"
+    },
+    {
+        "id": "2",
+        "answer": "Mashing Ingredients"
+    },
+    {
+        "id": "3",
+        "answer": ["https://www.dolivotastingbar.com/wp-content/uploads/2019/05/manzanilla-olives.jpg",
+                    "https://d1h1synnevvfsx.cloudfront.net/pub/media/catalog/product/cache/ebc6733575d5c8d1cd0f057bf2f42791/2/0/2020_10_09_5409.jpg",
+                    "https://cdn.shopify.com/s/files/1/0013/2477/7569/products/aag_960x.jpg?v=1597696572"]
+    },
+    {
+        "id": "4",
+        "answer": ["Add gin, lemon juice, syrup, and egg white to a shaker and vigorously dry-shake (without ice) for 15 seconds.",
+                    "Add 3 ice cubes and shake vigorously until well-chilled.",
+                    "Double-strain into a chilled Collins glass",
+                    "Add club soda."]
+    },
+    {
+        "id": "5",
+        "answer": "Mixing Drinks"
+    }
+]
 quiz = [
     {
         "id": "1",
         "question": "What is this tool used for?",
         "image": "https://static.restaurantsupply.com/media/catalog/product/cache/58705eee992a0d7bab305099af29f9ee/a/m/american-metalcraft-j202_1_1.jpg",
-        "answer": "Measuring Alcohol",
         "options": ["Mixing Drinks", "Measuring Alcohol", "Peeling Ingredients", "Straining Drinks"],
         "hint": "This tool is called a 'jigger'"
     },
@@ -17,7 +43,6 @@ quiz = [
         "id": "2",
         "question": "What is this tool used for?",
         "image": "https://m.media-amazon.com/images/I/51JwNh0iftL._AC_SL1400_.jpg",
-        "answer": "Mashing Ingredients",
         "options": ["Mashing Ingredients", "Measuring Alcohol", "Peeling Ingredients", "Straining Drinks"],
         "hint": "This tool is called a 'muddler'"
     },
@@ -52,7 +77,6 @@ quiz = [
         "id": "5",
         "question": "What is this tool used for?",
         "image": "https://m.media-amazon.com/images/I/61xmg-8MuuL._AC_SL1500_.jpg",
-        "answer": "Mixing Drinks",
         "options": ["Mixing Drinks",
                     "Measuring Alcohol",
                     "Peeling Ingredients",
@@ -60,6 +84,8 @@ quiz = [
         "hint": "This tool is called a 'Bar Spoon'"
     },
 ]
+
+data = []
 
 @app.route('/')
 def homepage():
@@ -70,10 +96,11 @@ def homepage():
 def quiz(id):
     global data
     global quiz
+    global quiz_answers
 
     id=int(id)
 
-    return render_template('quiz.html', quiz_index=id)
+    return render_template('quiz.html', quiz_index=id, quiz_answers=quiz_answers, data=data)
 
 if __name__ == '__main__':
    app.run(debug = True)
