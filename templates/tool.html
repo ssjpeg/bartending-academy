@@ -1,17 +1,78 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<script src="/static/tool.js"></script> 
 
 <script> 
     let tool = {{tool|tojson}}
+
+    $(document).ready(function(){
+        $("#previous-btn").click(function(){
+            id = parseInt({{tool.id}});
+            id -= 1;
+            if(id > 0){
+                window.location.href = "/lesson/tools/" + id;
+            }
+            else
+            {
+                window.location.href = "/tools/all/"
+            }
+        });
+        $("#next-btn").click(function(){
+            id = parseInt({{tool.id}});
+            id += 1;
+            if(id < 6){
+                window.location.href = "/lesson/tools/" + id;
+            }
+            else
+            {
+                window.location.href = "/quiz/1";
+            }
+        });
+    });
 </script>
 
 <div class="container">
-    <h3>{{tool.name}}</h3>
-    <div>
-        {{tool.id}}
+    <div class = "row">
+        <h3 class = "col-md-12 center">
+            {{tool.name}}
+        </h3>
     </div>
-
+    <div class="row">
+        <div class="col-md-2">
+        </div>
+        <div class="col-md-4">
+            <img src = '{{tool.image}}' height='200px' alt='{{tool.name}} Pic'></img>
+        </div>
+        <div class="col-md-4">
+            <img src = '{{tool.video}}' height='200px' alt='{{tool.name}} Gif'></img>
+        </div>
+        <div class="col-md-2">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-4">
+            <div class="yellow-bg">
+                {{tool.description}}
+            </div>
+        </div>
+        <div class="col-md-4">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <div>
+                <a class="button float-left" id="previous-btn">Previous</a>
+            </div>
+        </div>
+        <div class="col-md-8">
+        </div>
+        <div class="col-md-2">
+            <div>
+                <a class="button float-right" id="next-btn">Next</a>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}
