@@ -8,6 +8,33 @@
     let data = {{data|tojson}}
     let quiz_answers = {{quiz_answers|tojson}}
     let quiz_answer_id = {{quiz_answer_id|tojson}}
+
+    $(document).ready(function(){
+        $("#previous-btn").click(function(){
+            id = parseInt({{quiz_id.id}});
+            id -= 1;
+            if(id > 0){
+                id = id - 1
+                window.location.href = "/quiz/" + id;
+                console.log(id)
+            }
+            else
+            {
+                window.location.href = "/quiz/0"
+            }
+        });
+        $("#next-btn").click(function(){
+            id = parseInt({{quiz_id.id}});
+            if(id < 5){
+                window.location.href = "/quiz/" + id;
+            }
+            else
+            {
+                window.location.href = "/";
+            }
+            id += 1;
+        });
+    });
 </script>
 
 <div class="container">
@@ -32,5 +59,10 @@
         {% endfor %}
     </div>
     <div>
+
+    <div>
+        <div class = "btn btn-dark" id = "previous-btn"> Previous </div>
+        <div class = "btn btn-dark" id = "next-btn"> Next </div>
+    </div>
 </div>
 {% endblock %}
