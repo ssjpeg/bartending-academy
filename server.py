@@ -1,4 +1,3 @@
-from dataclasses import dataclass
 from flask import Flask
 from flask import render_template
 from flask import Response, request, jsonify
@@ -31,7 +30,7 @@ quiz_answers = [
         "answer": "Mixing Drinks"
     }
 ]
-quiz = [
+data = [
     {
         "id": "1",
         "question": "What is this tool used for?",
@@ -91,13 +90,13 @@ quiz = [
 @app.route('/')
 def homepage():
     global data
-    return render_template('homepage.html')
+    global quiz_answers
+    return render_template('homepage.html', data=data, quiz_answers=quiz_answers)
 
 @app.route('/quiz/<id>', methods=['GET', 'POST'])
 def quiz(id):
-    quiz_id = quiz[int(id)]
-
-    return render_template('quiz.html', quiz_id=quiz_id, quiz=quiz)
+    quiz_id = data[int(id)]
+    return render_template('quiz.html', quiz_id=quiz_id, data=data)
 
 if __name__ == '__main__':
    app.run(debug = True)
