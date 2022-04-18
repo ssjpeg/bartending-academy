@@ -40,6 +40,11 @@
   margin-top: 10px;
 }
 
+#imgGlassL{
+  height: 100px; 
+  width: 100px; 
+}
+
 #stepHeader{
   margin: auto; 
   background-color: lightgray;

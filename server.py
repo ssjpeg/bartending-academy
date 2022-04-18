@@ -207,11 +207,23 @@ def tools(id = None):
     tool = lesson_tools[id]
     return render_template('tool.html', tool=tool)
 
+@app.route('/lesson/tools/')
+def toolsLanding(id = None):
+    global lesson_tools
+    tools = lesson_tools
+    return render_template('toolLanding.html', tools=tools)
+
 @app.route('/lesson/recipes/<id>')
 def recipes(id = None):
     global lesson_recipes
     recipe = lesson_recipes[id]
     return render_template('recipe.html', recipe=recipe)
+
+@app.route('/lesson/recipes/')
+def recipesLanding(id = None):
+    global lesson_recipes
+    recipes = lesson_recipes
+    return render_template('recipeLanding.html', recipes=recipes)
 
 if __name__ == '__main__':
    app.run(debug = True)
