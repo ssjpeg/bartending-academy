@@ -8,9 +8,27 @@
 </script>
 
 <div class="container">
-    <h3>{{recipe.name}}</h3>
-    <div>
+    <div class = "col-md-4" id = "recipeTitle">{{recipe.name}}</div>
+    <div class = "col-md-12" id = "rsubHeader">
+        <div>For: {{recipe.purpose}}</div>
+        <div>Ingredients:{% for Ingredient in recipe.ingredients %}
+                {{Ingredient}}.
+            {% endfor %} 
+        </div>
+    </div>  
+    <div class = "row" id = "centerText"> 
+        <div class = "col-md-6"> 
+            {% for step in recipe.steps %}
+                <div class = "row" id = "stepHeader"> {{step}}</div>
+            {% endfor %} 
+        </div>
+        <div class = "col-md-6">  
+            <img id = "imgGlass" src = "{{recipe.image}}">
+        </div>
     </div>
-
+    <div>
+        <div class = "btn btn-dark"> Previous </div>
+        <div class = "btn btn-dark"> Next </div>
+    </div>
 </div>
 {% endblock %}
