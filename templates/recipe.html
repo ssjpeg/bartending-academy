@@ -5,7 +5,34 @@
 
 <script> 
     let recipe = {{recipe|tojson}}
+
+    $(document).ready(function(){
+        $("#previous-btn").click(function(){
+            id = parseInt({{recipe.id}});
+            id -= 1;
+            if(id > 0){
+                window.location.href = "/lesson/recipes/" + id;
+            }
+            else
+            {
+                window.location.href = "/lesson/recipes/"
+            }
+        });
+        $("#next-btn").click(function(){
+            id = parseInt({{recipe.id}});
+            id += 1;
+            if(id < 6){
+                window.location.href = "/lesson/recipes/" + id;
+            }
+            else
+            {
+                window.location.href = "/quiz/0";
+            }
+        });
+    });
 </script>
+
+
 
 <div class="container">
     <div class = "col-md-4" id = "recipeTitle">{{recipe.name}}</div>
@@ -27,8 +54,8 @@
         </div>
     </div>
     <div>
-        <div class = "btn btn-dark"> Previous </div>
-        <div class = "btn btn-dark"> Next </div>
+        <div class = "btn btn-dark" id = "previous-btn"> Previous </div>
+        <div class = "btn btn-dark" id = "next-btn"> Next </div>
     </div>
 </div>
 {% endblock %}
