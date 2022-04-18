@@ -6,6 +6,8 @@
 <script> 
     let quiz_id = {{quiz_id|tojson}}
     let data = {{data|tojson}}
+    let quiz_answers = {{quiz_answers|tojson}}
+    let quiz_answer_id = {{quiz_answer_id|tojson}}
 </script>
 
 <div class="container">
@@ -26,7 +28,7 @@
     </div>
         <h6><b>Options</b></h6>
         {% for tags in quiz_id.options%}
-        <li class="tagButton">{{options}}</li>
+        <li class="tagButton">{{tags}}</li>
         {% endfor %}
     </div>
     <div>

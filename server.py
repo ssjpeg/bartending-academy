@@ -198,7 +198,8 @@ def homepage():
 @app.route('/quiz/<id>', methods=['GET', 'POST'])
 def quiz(id):
     quiz_id = data[int(id)]
-    return render_template('quiz.html', quiz_id=quiz_id, data=data)
+    quiz_answer_id = quiz_answers[int(id)]
+    return render_template('quiz.html', quiz_id=quiz_id, data=data, quiz_answers=quiz_answers, quiz_answer_id=quiz_answer_id)
 
 @app.route('/lesson/tools/<id>')
 def tools(id = None):
