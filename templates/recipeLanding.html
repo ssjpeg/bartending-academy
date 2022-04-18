@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<script></script> 
+
+<script> 
+    let recipes = {{recipes|tojson}}
+</script>
+
+<div class="container">
+    <div class = "col-md-12"> 
+        {% for r in recipes %}
+                <div class = "row" id = "stepHeader"> 
+                    <a href = "/lesson/recipes/{{r}}"> 
+                        <div> {{recipes[r].name}} </div>
+                        <div> <img id = "imgGlassL" src = "{{recipes[r].image}}"></div>
+                    </a>
+                </div>
+        {% endfor %} 
+    </div>
+</div>
+{% endblock %}

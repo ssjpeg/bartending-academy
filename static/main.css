@@ -11,3 +11,45 @@
   margin: auto;
 
 }
+
+#recipeTitle{
+  text-align: center;
+  margin: auto; 
+  background-color: lightgrey;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-top: 20px;
+  font-size: xx-large;
+  font-weight: bold;
+}
+
+#rsubHeader{
+  margin: auto; 
+  text-align: center;
+  background-color: black;
+  color: white;
+  margin-top: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size:large;
+}
+
+#imgGlass{
+  height: 435px; 
+  width: 435px; 
+  margin-top: 10px;
+}
+
+#imgGlassL{
+  height: 100px; 
+  width: 100px; 
+}
+
+#stepHeader{
+  margin: auto; 
+  background-color: lightgray;
+  margin-top: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size:large;
+}

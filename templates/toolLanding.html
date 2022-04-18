@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<script></script> 
+
+<script> 
+    let tools = {{tools|tojson}}
+</script>
+
+<div class="container">
+    <div class = "col-md-12"> 
+        {% for t in tools %}
+                <div class = "row" id = "stepHeader"> 
+                    <a href = "/lesson/tools/{{t}}"> 
+                        <div> {{tools[t].name}} </div>
+                        <div> <img id = "imgGlassL" src = "{{tools[t].image}}"></div>
+                    </a>
+                </div>
+        {% endfor %} 
+    </div>
+</div>
+{% endblock %}
