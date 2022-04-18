@@ -49,6 +49,7 @@ quiz = [
     {
          "id": "3",
         "question": "What do you need to make a Martini?",
+        "image": "https://3f4c2184e060ce99111b-f8c0985c8cb63a71df5cb7fd729edcab.ssl.cf2.rackcdn.com/media/16258/vodkamartini.jpg",
         "options": ["https://www.dolivotastingbar.com/wp-content/uploads/2019/05/manzanilla-olives.jpg",
                     "https://www.absolut.com/globalassets/images/products/absolut-vodka/atlas/atlas_absolut-vodka_1000ml_4x.jpg",
                     "https://theaustralianfoodshop.com/wp-content/uploads/2021/03/bundaberg-ginger-beer-375ml.jpeg",
@@ -64,6 +65,7 @@ quiz = [
     {
         "id": "4",
         "question": "What is the procedure for making a Gin Fizz?",
+        "image": "https://www.liquor.com/thmb/ER6DAmPfS6RSQo3S4XkopdRpMv0=/720x720/smart/filters:no_upscale()/gin-fizz-720x720-primary-v3-2c1390963d014e35a01d741df2f9ae77.jpg",
         "options": ["Put sugar and water into a small saucepan on low heat and sit until the sugar dissolves.",
                     "Place Lime-salt-sugar on rim of glass.",
                     "Add gin, lemon juice, syrup, and egg white to a shaker and vigorously dry-shake (without ice) for 15 seconds.",
@@ -85,22 +87,17 @@ quiz = [
     },
 ]
 
-data = []
 
 @app.route('/')
 def homepage():
     global data
-    return render_template('homepage.html', data=data)
+    return render_template('homepage.html')
 
-@app.route('/quiz/<id')
+@app.route('/quiz/<id>', methods=['GET', 'POST'])
 def quiz(id):
-    global data
-    global quiz
-    global quiz_answers
+    quiz_id = quiz[int(id)]
 
-    id=int(id)
-
-    return render_template('quiz.html', quiz_index=id, quiz_answers=quiz_answers, data=data)
+    return render_template('quiz.html', quiz_id=quiz_id, quiz=quiz)
 
 if __name__ == '__main__':
    app.run(debug = True)
