@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<script src="/static/tool.js"></script> 
+
+<script> 
+    let tool = {{tool|tojson}}
+</script>
+
+<div class="container">
+    <h3>{{tool.name}}</h3>
+    <div>
+        {{tool.id}}
+    </div>
+
+</div>
+{% endblock %}

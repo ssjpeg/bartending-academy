@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<script src="/static/recipes.js"></script> 
+
+<script> 
+    let recipe = {{recipe|tojson}}
+</script>
+
+<div class="container">
+    <h3>{{recipe.name}}</h3>
+    <div>
+    </div>
+
+</div>
+{% endblock %}
