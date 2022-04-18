@@ -4,6 +4,110 @@ from flask import render_template
 from flask import Response, request, jsonify
 app = Flask(__name__)
 
+lesson_tools = [
+    {
+        "id": "1",
+        "name": "JIGGER",
+        "description": "A jigger is an hourglass-shaped measuring tool that allows for bartenders to pour accurate amounts of alcohol into every drink. They are usually made of metal and contain two different measuring amounts on the top and bottom."
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSX-qPeY0JspE5s3MyRNcI_-Gslmb8yMRCE_w&usqp=CAU"
+        "video": "https://images.huffingtonpost.com/2015-09-24-1443125482-6520074-02whippedcreamcocktailshaker-thumb.gif"     
+    },
+    {
+        "id": "2",
+        "name": "BAR SPOON",
+        "description": "A Bar Spoon is a long-handled spoon used to stir drinks and to serve as a jigger alternative when necessary. One Bar Spoon is equivalent to 5mL. It is long to ensure that it can reach the bottom of a jug."
+        "image": "https://cdn.shopify.com/s/files/1/0096/0276/0755/products/bp-red-knob-bar-spoon-web-800_700x700.jpg?v=1568655343"
+        "video": "https://i.pinimg.com/originals/18/aa/07/18aa070fe3bcc47301aab954eecf75e2.gif"     
+    },
+    {
+        "id": "3",
+        "name": "SHAKER",
+        "description": "A cocktail shaker is used to mix drinks. The shaker has three pieces: a metal base, a top, and a cap in the top which fits over a built-in strainer. The cap is removed, the ingredients are poured in, the shaker is capped and shaken briskly, and the drink is poured through the strainer."
+        "image": "https://m.media-amazon.com/images/I/51ERQMFQBaL._AC_SX425_.jpg"
+        "video": "https://c.tenor.com/9ObzC4ISif4AAAAC/bartender-shake.gif"     
+    },
+    {
+        "id": "4",
+        "name": "PEELER",
+        "description": "Peelers allow for bartenders to readily peel fruit or vegetables in order to augment the flavor profile of their drinks. These devices must be highly portable and fast working."
+        "image": "https://i5.walmartimages.com/asr/261eb067-0166-456a-969c-a363880644a9_1.fc7b4a4695f342210a0761d6820b7506.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF"
+        "video": "https://www.flashsale.pk/image/data/products/100332/xiaomi-kalar-fruit-vegetable-i-peeler-and-y-peeler-100332-16.gif"     
+    },
+    {
+        "id": "5",
+        "name": "MUDDLER",
+        "description": "Muddlers are used to mash fresh ingredients and infuse the flavors with the alcohol. The Muddler material (wooden/steel/plastic) have an impact on the mashing ability."
+        "image": "https://www.ubuy.co.id/productimg/?image=aHR0cHM6Ly9tLm1lZGlhLWFtYXpvbi5jb20vaW1hZ2VzL0kvNjFjRjFNYk9nT0wuX0FDX1NMMTUwMF8uanBn.jpg"
+        "video": "https://complex-res.cloudinary.com/image/upload/db12ngcvomggllbofhuy.gif"     
+    },
+
+
+]
+
+lesson_recipes = [
+    {
+        "id": "1",
+        "name": "MARTINI",
+        "purpose": "NYC Evening Bar Visits",
+        "ingredients": ["2 oz Gin", "Green Olive", "Vermouth"],
+        "steps": ["Add vermouth to a glass, swish around, pour out.",
+                    "In a separate mixing glass full of ice, add gin.",
+                    "Stir with bar spoon and strain into chilled martini glass.",
+                    "Garnish with a fresh olive."
+                ],
+        "image": "https://bevvyco.s3.amazonaws.com/img/drinks/cq/wcq/gibson-47d7b654b091d531cab0742cff386314-lg.jpg",
+    },
+    {
+        "id": "2",
+        "name": "GIN FIZZ",
+        "purpose": "Celebatory Drink for Big Events",
+        "ingredients": ["2 oz Gin", "1 oz Lemon Juice", "3/4 oz Simple Syrup", "Egg White", "1 oz Club Soda"],
+        "steps": ["Add gin, lemon juice, syrup, and egg white to a shaker and vigorously dry-shake (without ice) for 15 seconds.",
+                    "Add 3 ice cubes and shake vigorously until well-chilled.",
+                    "Double-strain into a chilled Collins glass.", 
+                    "Add club soda to the glass."
+                ],
+        "image": "https://i.pinimg.com/originals/26/cb/a2/26cba2cc8a60a146fd955d950dab3467.jpg",
+    },
+    {
+        "id": "3",
+        "name": "TEQUILA SUNRISE",
+        "purpose": "Hot Brunch Days",
+        "ingredients": ["1 oz Tequila", "3/4 cup Orange Juice", "Grenadine Syrup", "Orange", "Cherry"],
+        "steps": ["Add Tequila and OJ to a shaker and shake.",
+                    "Fill a chilled 12 oz glass with ice cubes and add the mixture mixture.",
+                    "Add Grenadine", 
+                    "Garnish with a slice of orange and a maraschino cherry."
+                ],
+        "image": "https://www.averiecooks.com/wp-content/uploads/2015/08/tequilasunrise-16.jpg",
+    },
+    {
+        "id": "4",
+        "name": "MARGARITA",
+        "purpose": "A Casual, Healthy Drink",
+        "ingredients": ["2 oz Blanqo Tequila", "1/2 oz Orange Liquer", "1 oz Lime Juice", "1/2 oz Agave Syrup", "Lime Wheel", "Kosher Salt"],
+        "steps": ["Add tequila, orange liqueur, lime juice and agave syrup to a cocktail shaker filled with ice.",
+                    "Shake until well-chilled."
+                    "Strain into a rocks glass over fresh ice.",
+                    "Garnish with a lime wheel and kosher salt rim."
+                ],
+        "image": "https://www.seriouseats.com/thmb/PIVqgfUtdn74p6KurPXlrNwlxKs=/1125x1125/smart/filters:no_upscale()/__opt__aboutcom__coeus__resources__content_migration__serious_eats__seriouseats.com__recipes__images__2015__04__20150323-cocktails-vicky-wasik-margarita-c84b154e757d43688de15dc8f8ca0de9.jpg",
+    }
+    {
+        "id": "5",
+        "name": "MOJITO",
+        "purpose": "Warm Summer Evenings",
+        "ingredients": ["3 Mint Leaves", "1/2 oz Simple Syrup", "2 oz White Rum", "3/4 oz Lime Juice", "Club Soda", "Mint Sprig", "Lime Wheel"],
+        "steps": ["Lightly muddle the mint with the simple syrup in a shaker.",
+                    "Add the rum, lime juice and ice, and give it a brief shake.",
+                    "Strain into a highball glass over fresh ice.", 
+                    "Top with the club soda and garnish with a mint sprig and lime wheel."
+                ],
+        "image": "https://cdn.loveandlemons.com/wp-content/uploads/2020/07/mojito.jpg",
+    },
+
+
+]
 quiz_answers = [
     {
         "id": "1",
