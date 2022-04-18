@@ -5,7 +5,7 @@
 
 <script> 
     let quiz_id = {{quiz_id|tojson}}
-    let quiz = {{quiz|tojson}}
+    let data = {{data|tojson}}
 </script>
 
 <div class="container">
@@ -13,19 +13,19 @@
         <button id="start-btn" type="submit"></button>
     </div>
     <h3>Problem:</h3>
-    {{quiz.id}}
+    {{quiz_id.id}}
     <div class="row">
         <div class="col-md-4">
-            <h2><b>{{quiz.question}}</b></h2>
+            <h2><b>{{quiz_id.question}}</b></h2>
         </div>
     </div>
     <div class="row">
         <div class="col-md-4">
-            <img class="img_format" src={{quiz.image}}>
+            <img class="img_format" src={{quiz_id.image}}>
         </div>
     </div>
         <h6><b>Options</b></h6>
-        {% for tags in quiz.options%}
+        {% for tags in quiz_id.options%}
         <li class="tagButton">{{options}}</li>
         {% endfor %}
     </div>
