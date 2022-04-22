@@ -1,19 +1,21 @@
 $(document).ready(function(){
     console.log("document ready")
-    $("#start-btn").html("start")
+    /**$("#start-btn").html("start")
     $("#start-btn").click(function (event) {
         console.log("click")
         $("#start-btn").addClass("hide")
-        let quizNumbers = ["1", "2", "3", "4", "5"]
-        displayQuestion(quizNumbers, quiz)
+        //let quizNumbers = ["1", "2", "3", "4", "5"]
+        displayAnswerChoices(data_answers)
     })
+    **/
+   displayAnswerChoices(data_answers)
 })
 
 function displayQuestion(quizNumbers, quiz){
     $("#displayResultItems").empty()
     console.log("enter display q's")
 
-    $.each(data, function(quizIndex, quizDetails){
+    $.each(data, function(quizDetails){
         if(quizNumbers.includes(quizDetails["id"])){
             let quizID = quizDetails["id"]
             let quizQuestion = quizDetails["question"]
@@ -38,6 +40,23 @@ function displayQuestion(quizNumbers, quiz){
             $("#displayResultItems").append(quizCol)
         }
     })
+}
+
+function displayAnswerChoices(data_answers){
+    $("#answerChoices").empty()
+    console.log("showing data_answers:", data_answers)
+    $.each(data_answers, function(quizIndex, quizDetails){
+        if (quizIndex === 2){
+            console.log("quizIndex = 2")
+            let quizImage = ("<img src= " + '\u0022' + quizDetails["options"] + '\u0022' + "></img>")
+            $("#answerChoices").append(quizImage)
+        } else {
+            console.log("quizIndex != 2")
+            let quizChoices = quizDetails["options"]
+            $("#answerChoices").append(quizChoices)
+        }
+    })
+
 }
 
 function chooseAnswer(){

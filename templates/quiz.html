@@ -8,6 +8,7 @@
     let data = {{data|tojson}}
     let quiz_answers = {{quiz_answers|tojson}}
     let quiz_answer_id = {{quiz_answer_id|tojson}}
+    let data_answers = {{data_answers|tojson}}
 
     $(document).ready(function(){
         $("#previous-btn").click(function(){
@@ -41,6 +42,7 @@
     <div class="row">
         <button id="start-btn" type="submit"></button>
     </div>
+    <div id="displayResultItems"></div>
     <h3>Problem:</h3>
     {{quiz_id.id}}
     <div class="row">
@@ -53,13 +55,25 @@
             <img class="img_format" src={{quiz_id.image}}>
         </div>
     </div>
-        <h6><b>Options</b></h6>
+ <!--   <h6><b>Options</b></h6>
         {% for tags in quiz_id.options%}
         <li id="tagButton">{{tags}}</li>
         {% endfor %}
+
+        {% for t in quiz_id %}
+            {% if t == "3"%}
+                {% for t in quiz_id.options %}
+                <div class = "row" id = "stepHeader"> 
+                <div> {{quiz_id[t].options}} </div>
+                <div> <img id = "imgGlassL" src = "{{quiz_id[t].options}}"></div>
+            </a>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endfor %} 
     </div>
     <div>
-
+-->    <div id="answerChoices"></div>
     <div>
         <div class = "btn btn-dark" id = "previous-btn"> Previous </div>
         <div class = "btn btn-dark" id = "next-btn"> Next </div>
