@@ -134,12 +134,15 @@ quiz_answers = [
 ]
 data_answers = [
     {
+        "id": "1",
         "options": ["Mixing Drinks", "Measuring Alcohol", "Peeling Ingredients", "Straining Drinks"]
     },
     {
-       "options": ["Mashing Ingredients", "Measuring Alcohol", "Peeling Ingredients", "Straining Drinks"] 
+        "id": "2",
+        "options": ["Mashing Ingredients", "Measuring Alcohol", "Peeling Ingredients", "Straining Drinks"] 
     },
     {
+        "id": "3",
         "options": ["https://www.dolivotastingbar.com/wp-content/uploads/2019/05/manzanilla-olives.jpg",
                     "https://www.absolut.com/globalassets/images/products/absolut-vodka/atlas/atlas_absolut-vodka_1000ml_4x.jpg",
                     "https://theaustralianfoodshop.com/wp-content/uploads/2021/03/bundaberg-ginger-beer-375ml.jpeg",
@@ -152,6 +155,7 @@ data_answers = [
                     "https://cdn.shopify.com/s/files/1/0013/2477/7569/products/aag_960x.jpg?v=1597696572"]
     },
     {
+        "id": "4",
         "options": ["Put sugar and water into a small saucepan on low heat and sit until the sugar dissolves.",
                     "Place Lime-salt-sugar on rim of glass.",
                     "Add gin, lemon juice, syrup, and egg white to a shaker and vigorously dry-shake (without ice) for 15 seconds.",
@@ -162,6 +166,7 @@ data_answers = [
                     "Add 3 ice cubes and shake vigorously until well-chilled."]
     },
     {
+        "id": "5",
         "options": ["Mixing Drinks",
                     "Measuring Alcohol",
                     "Peeling Ingredients",

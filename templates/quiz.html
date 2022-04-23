@@ -43,8 +43,8 @@
         <button id="start-btn" type="submit"></button>
     </div>
     <div id="displayResultItems"></div>
-    <h3>Problem:</h3>
-    {{quiz_id.id}}
+    <h4>Question: {{quiz_id.id}}</h4>
+    <h4></h4>
     <div class="row">
         <div class="col-md-4">
             <h2><b>{{quiz_id.question}}</b></h2>
@@ -74,6 +74,14 @@
     </div>
     <div>
 -->    <div id="answerChoices"></div>
+<form class="q">
+    <input name="test" type="radio" value="inc" /> A) 1
+    <input name="test" type="radio" value="ans"/> B) 2
+    <input name="test" type="radio" value="inc" /> C) 3
+    <input name="test" type="radio" value="inc" /> D) 4
+  </form>
+<div class="exp answer-text" style="display:none"> correct! </div>
+<div class="red answer-text" style="display:none"> d is the correct answer</div> 
     <div>
         <div class = "btn btn-dark" id = "previous-btn"> Previous </div>
         <div class = "btn btn-dark" id = "next-btn"> Next </div>

@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    console.log("document ready")
+    //console.log("document ready")
     /**$("#start-btn").html("start")
     $("#start-btn").click(function (event) {
         console.log("click")
@@ -8,54 +8,152 @@ $(document).ready(function(){
         displayAnswerChoices(data_answers)
     })
     **/
-   displayAnswerChoices(data_answers)
+
+   /** $(function () {
+        $('input[name="test"]').on('click', function() {
+            $(".answer-text").hide();
+            if ($(this).val() == 'ans') {
+                $('.exp').show();
+            } else {
+                $('.red').show();
+            }
+        })
+    });*/ 
+    displayAnswerChoices()
 })
 
-function displayQuestion(quizNumbers, quiz){
-    $("#displayResultItems").empty()
-    console.log("enter display q's")
 
-    $.each(data, function(quizDetails){
-        if(quizNumbers.includes(quizDetails["id"])){
-            let quizID = quizDetails["id"]
-            let quizQuestion = quizDetails["question"]
-            //let quizImage = $("<a href='/quiz/" + quizID + "'>")
-            quizImage.append("<img src= " + '\u0022' + quizDetails["image"] + '\u0022' + "></img>")
-            let quizOptions = quizDetails["options"]
-            console.log(quizOptions)
-            let quizCol = $("<div class='col-md-12'>")
-            let quizRow1 = $("<div class='row'>")
-            let quizRow2 = $("<div class='row'>")
-            let quizImageRow = $("<div class='row'>")
 
-            quizCol.text("")
-            quizCol.append("<br>")
-            quizRow1.append("<a href='/quiz/" + quizID + "'>" + quizQuestion)
-            quizCol.append(quizRow1)
-            quizImageRow.append(quizImage)
-            quizCol.append(quizImageRow)
-            quizRow2.append("Options: " + quizOptions)
-            quizRow2.append("{% for tags in quiz_id.options%}<li id='tagButton'>{{tags}}</li>{% endfor %}")
-            quizCol.append(quizRow2)
-            $("#displayResultItems").append(quizCol)
-        }
-    })
-}
-
-function displayAnswerChoices(data_answers){
+function displayAnswerChoices(){
     $("#answerChoices").empty()
-    console.log("showing data_answers:", data_answers)
-    $.each(data_answers, function(quizIndex, quizDetails){
-        if (quizIndex === 2){
-            console.log("quizIndex = 2")
-            let quizImage = ("<img src= " + '\u0022' + quizDetails["options"] + '\u0022' + "></img>")
-            $("#answerChoices").append(quizImage)
-        } else {
-            console.log("quizIndex != 2")
-            let quizChoices = quizDetails["options"]
-            $("#answerChoices").append(quizChoices)
+    let quizForm = $("<form class='q'>")
+    let endQuizForm = $("</form>")
+    let submitButton = $("<input type='submit' value='Submit'>  ")
+
+    $.each(data_answers, function(quizIndex, data_answers){
+        //console.log("data_answers options", data_answers["options"][0])
+        let choice1 = data_answers["options"][0]
+        let choice2 = data_answers["options"][1]
+        let choice3 = data_answers["options"][2]
+        let choice4 = data_answers["options"][3]
+        let choice5 = data_answers["options"][4]
+        let choice6 = data_answers["options"][5]
+        let choice7 = data_answers["options"][6]
+        let choice8 = data_answers["options"][7]
+        let choice9 = data_answers["options"][8]
+        let choice10 = data_answers["options"][9]
+        //console.log(data_answers[id])
+        if (window.location.href === "http://127.0.0.1:5000/quiz/0" && data_answers["id"] === "1"){
+            //console.log(data_answers)
+            let quizCol = $("<div class='col-md-12'>")
+            quizCol.append("<form class='q'>")
+            //console.log("data_answers 1", data_answers)
+            //console.log(data_answers["options"][0])
+            let quizOption1 = $("<input name='test' type='radio' value='ans' />")
+            quizOption1.text("")
+            //quizOption1.append("A)")
+            //quizOption1.append(data_answers)
+            quizOption1.append(data_answers["options"][0])
+            quizOption1.append("hello")
+            quizCol.append(quizOption1)
+            let quizOption2 = $("<input name='test' type='radio' value='incl' /> B)")
+            quizOption2.append(choice2)
+            quizCol.append(quizOption2)
+            let quizOption3 = $("<input name='test' type='radio' value='incl' /> C)")
+            quizOption3.append(choice3)
+            quizCol.append(quizOption3)
+            let quizOption4 = $("<input name='test' type='radio' value='incl' /> D)")
+            quizOption4.append(choice4)
+            quizCol.append(quizOption4)
+            quizCol.append(submitButton)
+            quizCol.append("</form>")
+            $("#answerChoices").append(quizCol)
+            console.log(choice1)
         }
+        else if (window.location.href === "http://127.0.0.1:5000/quiz/1" && data_answers["id"] === "2"){
+            //console.log(data_answers)
+            let quizCol = $("<div class='col-md-12'>")
+            quizCol.append("<form class='q'>")
+            //console.log("data_answers 1", data_answers)
+            //console.log(data_answers["options"][0])
+            let quizOption1 = $("<input name='test' type='radio' value='ans' />")
+            quizOption1.text("")
+            //quizOption1.append("A)")
+            //quizOption1.append(data_answers)
+            quizOption1.append(data_answers["options"][0])
+            quizOption1.append("hello")
+            quizCol.append(quizOption1)
+            let quizOption2 = $("<input name='test' type='radio' value='incl' /> B)")
+            quizOption2.append(choice2)
+            quizCol.append(quizOption2)
+            let quizOption3 = $("<input name='test' type='radio' value='incl' /> C)")
+            quizOption3.append(choice3)
+            quizCol.append(quizOption3)
+            let quizOption4 = $("<input name='test' type='radio' value='incl' /> D)")
+            quizOption4.append(choice4)
+            quizCol.append(quizOption4)
+            quizCol.append(submitButton)
+            quizCol.append("</form>")
+            $("#answerChoices").append(quizCol)
+            console.log(choice1)
+    }
+    else if (window.location.href === "http://127.0.0.1:5000/quiz/3" && data_answers["id"] === "4"){
+        //console.log(data_answers)
+        let quizCol = $("<div class='col-md-12'>")
+        quizCol.append("<form class='q'>")
+        //console.log("data_answers 1", data_answers)
+        //console.log(data_answers["options"][0])
+        let quizOption1 = $("<input name='test' type='radio' value='ans' />")
+        quizOption1.text("")
+        //quizOption1.append("A)")
+        //quizOption1.append(data_answers)
+        quizOption1.append(data_answers["options"][0])
+        quizOption1.append("hello")
+        quizCol.append(quizOption1)
+        let quizOption2 = $("<input name='test' type='radio' value='incl' /> B)")
+        quizOption2.append(choice2)
+        quizCol.append(quizOption2)
+        let quizOption3 = $("<input name='test' type='radio' value='incl' /> C)")
+        quizOption3.append(choice3)
+        quizCol.append(quizOption3)
+        let quizOption4 = $("<input name='test' type='radio' value='incl' /> D)")
+        quizOption4.append(choice4)
+        quizCol.append(quizOption4)
+        quizCol.append(submitButton)
+        quizCol.append("</form>")
+        $("#answerChoices").append(quizCol)
+        console.log(choice1)
+    }
+    else if (window.location.href === "http://127.0.0.1:5000/quiz/4" && data_answers["id"] === "5"){
+        //console.log(data_answers)
+        let quizCol = $("<div class='col-md-12'>")
+        quizCol.append("<form class='q'>")
+        //console.log("data_answers 1", data_answers)
+        //console.log(data_answers["options"][0])
+        let quizOption1 = $("<input name='test' type='radio' value='ans' />")
+        quizOption1.text("")
+        //quizOption1.append("A)")
+        //quizOption1.append(data_answers)
+        quizOption1.append(data_answers["options"][0])
+        quizOption1.append("hello")
+        quizCol.append(quizOption1)
+        let quizOption2 = $("<input name='test' type='radio' value='incl' /> B)")
+        quizOption2.append(choice2)
+        quizCol.append(quizOption2)
+        let quizOption3 = $("<input name='test' type='radio' value='incl' /> C)")
+        quizOption3.append(choice3)
+        quizCol.append(quizOption3)
+        let quizOption4 = $("<input name='test' type='radio' value='incl' /> D)")
+        quizOption4.append(choice4)
+        quizCol.append(quizOption4)
+        quizCol.append(submitButton)
+        quizCol.append("</form>")
+        $("#answerChoices").append(quizCol)
+        console.log(choice1)
+}
     })
+    
+
 
 }
 
