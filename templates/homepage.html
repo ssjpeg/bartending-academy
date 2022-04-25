@@ -6,12 +6,38 @@
     //json
 </script>
 
-<script></script> 
-    <div class="row">
-            <h4><div id="centerText" > <a href = "/lesson/tools"> 
-                Start
-            </a>
-            </div></h4>
+<script>
+    $(document).ready(function(){
+        $("#start-btn").click(function(){
+            window.location.href = "/lesson/tools";
+        });
+    });
+
+</script> 
+    <div class = "row">
+        <h3 class = "center" id ="homepage-title">
+            Welcome to Bartending School
+        </h3>
+    </div>
+    <div class="row homepage-row">
+        <div class = "col-md-6">
+            <img src = "https://glamoux.com/wp-content/uploads/2021/04/Slide12-min.jpg" width="100%">
+        </div>
+        <div class = "col-md-6 intro">
+            <div class ="intro-description">
+            Get ready to learn the ancient art form of Bartending!
+            <br>
+            You will graduate from this school with an understanding of a Bartender's tools and basic to advanced recipes to wow your friends in any social situation.
+
+            </div>
+            <div class="text-center">
+                <br>
+
+                <a class="btn btn-dark" id="start-btn">Start</a>
+
+            </div>
+        </div>
+
     </div>
     
 {% endblock %}
