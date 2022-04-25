@@ -103,3 +103,35 @@
   margin-left: 10px;
   margin-right: 10px;
 }
+
+.homepage-row{
+  padding-top: 20px;
+}
+
+#homepage-title{
+  text-align: center;
+  margin: auto; 
+  background-color: lightgrey;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: xx-large;
+  font-weight: bold;
+}
+
+.intro-description{
+  padding-top: 20px;
+  font-size: large;
+}
+
+.intro{
+  background-color: #ffef96;
+}
+
+#start-btn{
+  color: white;
+  font-size: large;
+}
