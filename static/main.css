@@ -143,3 +143,26 @@
 body{
   background-color: rgb(241, 232, 221);
 }
+
+.drop_a{
+  background-color: lightskyblue;
+  margin-right: 10px; 
+  text-align: center;
+  margin-top: 10px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  padding-right: 50px;
+  padding-bottom: 50px;
+  
+}
+.img_format_answer{
+  height: 100px;
+  width: 100px;
+  border: 1px solid green;
+  margin-right: 20px;
+  margin-top: 10px;
+}
+
+.ui-state-hover{
+  background-color: rgb(1, 1, 29);
+}
