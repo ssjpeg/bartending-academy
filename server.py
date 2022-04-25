@@ -14,7 +14,7 @@ lesson_tools = {
     "2":{
         "id": "2",
         "name": "BAR SPOON",
-        "description": "A Bar Spoon is a long-handled spoon used to stir drinks and to serve as a jigger alternative when necessary. One Bar Spoon is equivalent to 5mL. It is long to ensure that it can reach the bottom of a jug.",
+        "description": "A bar spoon is a long-handled spoon used to stir drinks and to serve as a jigger alternative when necessary. One Bar Spoon is equivalent to 5mL. It is long to ensure that it can reach the bottom of a jug.",
         "image": "https://cdn.shopify.com/s/files/1/0096/0276/0755/products/bp-red-knob-bar-spoon-web-800_700x700.jpg?v=1568655343",
         "video": "https://i.pinimg.com/originals/18/aa/07/18aa070fe3bcc47301aab954eecf75e2.gif",     
     },
@@ -30,7 +30,7 @@ lesson_tools = {
         "name": "PEELER",
         "description": "Peelers allow for bartenders to readily peel fruit or vegetables in order to augment the flavor profile of their drinks. These devices must be highly portable and fast working.",
         "image": "https://i5.walmartimages.com/asr/261eb067-0166-456a-969c-a363880644a9_1.fc7b4a4695f342210a0761d6820b7506.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF",
-        "video": "https://www.flashsale.pk/image/data/products/100332/xiaomi-kalar-fruit-vegetable-i-peeler-and-y-peeler-100332-16.gif",     
+        "video": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Benutzung_eines_Kartoffelsch%C3%A4ler.gif/220px-Benutzung_eines_Kartoffelsch%C3%A4ler.gif",     
     },
     "5":{
         "id": "5",

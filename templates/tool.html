@@ -32,45 +32,42 @@
 </script>
 
 <div class="container">
-    <div class = "row">
-        <h3 class = "col-md-12 center">
+    <div class = "col-md-4" id = "tool-title">
+        <h3 class = "center">
             {{tool.name}}
         </h3>
     </div>
+    </div>
     <div class="row">
-        <div class="col-md-2">
-        </div>
-        <div class="col-md-4">
+        <div class="col-md-6 tool-media-left">
             <img src = '{{tool.image}}' height='200px' alt='{{tool.name}} Pic'></img>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-6 tool-media-right">
             <img src = '{{tool.video}}' height='200px' alt='{{tool.name}} Gif'></img>
-        </div>
-        <div class="col-md-2">
         </div>
     </div>
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-2">
         </div>
-        <div class="col-md-4">
-            <div class="yellow-bg">
+        <div class="col-md-8">
+            <div class="yellow-bg tool-description">
                 {{tool.description}}
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-2">
         </div>
     </div>
     <div class="row">
         <div class="col-md-2">
             <div>
-                <a class="button float-left" id="previous-btn">Previous</a>
+                <a class="btn btn-dark float-left" id="previous-btn">Previous</a>
             </div>
         </div>
         <div class="col-md-8">
         </div>
         <div class="col-md-2">
             <div>
-                <a class="button float-right" id="next-btn">Next</a>
+                <a class="btn btn-dark float-right" id="next-btn">Next</a>
             </div>
         </div>
     </div>

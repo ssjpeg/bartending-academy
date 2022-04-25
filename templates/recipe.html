@@ -53,9 +53,19 @@
             <img id = "imgGlass" src = "{{recipe.image}}">
         </div>
     </div>
-    <div>
-        <div class = "btn btn-dark" id = "previous-btn"> Previous </div>
-        <div class = "btn btn-dark" id = "next-btn"> Next </div>
+    <div class="row">
+        <div class="col-md-2">
+            <div>
+                <a class="btn btn-dark float-left" id="previous-btn">Previous</a>
+            </div>
+        </div>
+        <div class="col-md-8">
+        </div>
+        <div class="col-md-2">
+            <div>
+                <a class="btn btn-dark float-right" id="next-btn">Next</a>
+            </div>
+        </div>
     </div>
 </div>
 {% endblock %}

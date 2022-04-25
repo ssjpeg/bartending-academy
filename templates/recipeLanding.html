@@ -8,10 +8,10 @@
 </script>
 
 <div class="container">
-    <h2> All Recipes </h2>
-    <div class = "col-md-12"> 
+    <div id= "tool-title"> All Tools </div>
+    <div class = "row" id ="tool-header"> 
         {% for r in recipes %}
-                <div class = "row" id = "stepHeader"> 
+                <div class = "col-md-2"> 
                     <a href = "/lesson/recipes/{{r}}"> 
                         <div> {{recipes[r].name}} </div>
                         <div> <img id = "imgGlassL" src = "{{recipes[r].image}}"></div>
