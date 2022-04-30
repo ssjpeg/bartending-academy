@@ -291,8 +291,8 @@ questions2 = {
     }
 }
 quizzes = [
-    ["Tools", "https://www.shareicon.net/data/2015/11/30/680006_tools_512x512.png"], 
-    ["Drinks", "https://static.vecteezy.com/system/resources/previews/001/500/322/non_2x/cocktail-drink-icon-free-vector.jpg"]
+    ["Tools", "https://www.cocktailhammer.com/wp-content/uploads/2020/10/ordered-assortment-of-essential-bartending-tools-for-beginners.jpg"], 
+    ["Drinks", "http://www.findeatdrink.com/Index/Drink/Entries/2013/9/18_gaz_regan_files/mercury%20bar_FB.jpg"]
 ]
 @app.route('/')
 def homepage():

@@ -1,42 +1,46 @@
 {% extends "layout.html" %} {% block content %}
 
+<script>
+  let quizzes = {{quizzes|tojson}};
+  
+  $(document).ready(function () {
+    console.log(quizzes);
+    $("#tools").click(function() {
+      window.location.href = "/quiz1/1";
+    });
+    $("#drinks").click(function() {
+      window.location.href = "/quiz2/1";
+    });
+  })
+  
+</script>
+
 <div class="container">
+  <div class = "text-center"> <h1> Quiz Selection </h1><hr></div>
+
   <div class="row">
     <div class="col-md-6">
-      <img class= "img_format" src="{{quizzes[0][1]}}">
+      <img class= "img_format2 center" src="{{quizzes[0][1]}}">
     </div>
     <div class="col-md-6">
-      <img class="img_format" src="{{quizzes[1][1]}}">
+      <img class="img_format2 center" src="{{quizzes[1][1]}}">
     </div> 
   </div>
+
   <div class="row">
     <div class="col-md-6">
-      <button type="button" class="btn btn-primary" id="tools">
-        <div>{{quizzes[0][0]}} Quiz</div>
+      <hr> 
+      <button type="button" class="btn btn-primary btn-dark center" id="tools">
+        <div id = "quiz_choice">{{quizzes[0][0]}} Quiz</div>
       </button>
     </div>
     <div class="col-md-6">
-      <button type="button" class="btn btn-primary" id="drinks">
-        <div>{{quizzes[1][0]}} Quiz</div>
+      <hr> 
+      <button type="button" class="btn btn-primary btn-dark center" id="drinks">
+        <div id = "quiz_choice">{{quizzes[1][0]}} Quiz</div>
       </button>
     </div> 
 </div>
 </div>
-
-<script>
-
-let quizzes = {{quizzes|tojson}};
-
-$(document).ready(function () {
-  console.log(quizzes);
-  $("#tools").click(function() {
-    window.location.href = "/quiz1/1";
-  });
-  $("#drinks").click(function() {
-    window.location.href = "/quiz2/1";
-  });
-})
-
-</script>
 
 {% endblock %}

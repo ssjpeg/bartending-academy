@@ -2,6 +2,13 @@
   border: thin solid black;
 }
 
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
 #centerText{
   margin: auto;
 }
@@ -56,6 +63,10 @@
 
 .img_format{
   height: 200px;
+}
+.img_format2{
+  height: 500px;
+  width: 500px;
 }
 
 .tool-media-left{
@@ -142,4 +153,42 @@
 
 body{
   background-color: rgb(241, 232, 221);
+}
+
+#quiz_choice{
+  font-size: x-large;
+}
+
+hr {
+  height: 2px;
+  background-color: #F1E8DD;
+  border: none;
+}
+
+#question_title{
+  margin-top: 50px;
+  font-size: xx-large; 
+  font-weight: bold;
+}
+#question_text{
+  font-size: x-large; 
+  font-weight: bold;
+}
+.questionOptions{
+  margin-top: 10px;
+  margin-bottom: 2px; 
+}
+#checkBtn{
+  margin-top: 10px;
+}
+#next-btn{
+  position: relative; 
+  float: right; 
+}
+#feedback{
+  font-weight: bolder;
+  background-color: lightblue;
+  font-size: larger;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
