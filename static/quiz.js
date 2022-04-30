@@ -150,6 +150,36 @@ function displayAnswerChoices(){
             quizCol.append("</form>")
             $("#answerChoices").append(quizCol)
 }
+        else if (window.location.href === "http://127.0.0.1:5000/quiz/2" && data_answers["id"] === "3"){
+            let quizCol = $("<div class='col-md-12'>")
+            let all_options = $("<div class='row col-md-12'>")
+
+            $(data_answers["options"]).each(function(index, value){
+                let answer_drag = $("<img class='img_format_answer' src=" + value + ">")
+                $(".img_format_answer").draggable({revert: "invalid", zIndex: 100})
+                all_options.append(answer_drag)
+            }) 
+
+            let dropzone = $("<div class = 'row col-md-12'> <div class = 'col-md-2 drop_a' id = 'drop1'>1</div> <div class = 'col-md-2 drop_a' id = 'drop2'>2</div> <div class = 'col-md-2 drop_a' id = 'drop3'>3</div> <div class = 'col-md-2 drop_a' id = 'drop4'>4</div></div>")
+            
+            $(".drop_a").droppable({
+                accept: ".img_format_answer",
+                classes: {
+                    "ui-droppable-hover": "ui-state-hover"
+                  },
+                over: function(event, ui){
+                    console.log(2)
+                  },
+                drop: function(event, ui){
+                    ui.draggable.remove()
+                    console.log("asdf")
+                }
+            })
+
+            quizCol.append(dropzone)
+            quizCol.append(all_options)
+            $("#answerChoices").append(quizCol)
+        }
     })
     
 
