@@ -318,7 +318,7 @@ def quiz2(quiz_id):
     global wrong_ans
     if (quiz_id == "1"):
         wrong_ans = 0
-    question = questions[quiz_id]
+    question = questions2[quiz_id]
     return render_template('quiz2.html', quiz=2, question=question)
 
 @app.route('/results')

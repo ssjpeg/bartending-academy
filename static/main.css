@@ -68,6 +68,12 @@
   height: 500px;
   width: 500px;
 }
+.img_format3{
+  height: 200px;
+  width: 200px;
+  border: 10px solid  purple;
+  margin-bottom: 2px; 
+}
 
 .tool-media-left{
   text-align: right;
@@ -191,4 +197,11 @@ hr {
   font-size: larger;
   margin-top: 10px;
   margin-bottom: 10px;
+}
+.drop_a{
+  background: lightblue;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  border: 20px solid #F1E8DD;
+  font-weight: bold;
 }

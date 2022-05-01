@@ -1,0 +1,115 @@
+{% extends "layout.html" %} {% block content %}
+<script>
+
+    let question = {{question|tojson}};
+    let optionCorrect = false;
+    let wrongAnswer=0;
+    
+
+    function chooseAnswer(element){
+        $("#checkBtn").prop("disabled", false);
+        if ($(element).find(".options").html() == question["answer"]) {
+            optionCorrect = true;
+        } else {
+            optionCorrect = false;
+        }
+    }
+    
+    function checkAnswer() {
+        $("#feedback").empty();
+        if (optionCorrect == true) {
+            $("#feedback").text("Correct!")
+            $('.progress-bar').css('width', question.progress[1]+'%').attr('aria-valuenow', question.progress[1]);    
+            $("#change_question").html("<div class = 'btn btn-dark' id = 'next-btn'> Next </div>")
+            $("#checkBtnDiv").html("")
+            return
+        } else {
+            wrongAnswer += 1;
+      }
+    
+      $.ajax({
+          type: "POST",
+          url: "/wrong_ans",
+          dataType : "json",
+          contentType: "application/json; charset=utf-8",
+          data: JSON.stringify(wrongAnswer),
+          success: function (response) {
+              $("#feedback").text(question.answer + " is the correct answer.");
+              $('.progress-bar').css('width', question.progress[1]+'%').attr(question.progress[1]);   
+              $("#change_question").html("<div class = 'btn btn-dark' id = 'next-btn'> Next </div>")
+              $("#checkBtnDiv").html("")
+              
+            },
+          error: function(request, status, error){
+          }
+      });
+    }
+    
+    $(document).ready(function () {
+        $(".questionOptions").each(function (index, element) {
+            $(element).click(function(){chooseAnswer($(element))});
+        });
+        $("#checkBtn").click(checkAnswer);
+        $("#next-btn").click(function(){
+                id = parseInt(question.quiz_id);
+                if(id < 3){
+                    window.location.href = "/quiz1/" + id;
+                }
+                else
+                {
+                    window.location.href = "/";
+                }
+                id += 1;
+            }); 
+    })
+</script>
+
+<div class="container">
+    <div class="progress">
+        <div class="progress-bar" role="progressbar" aria-valuenow="{{question.progress[0]}}" aria-valuemin="0" aria-valuemax="100" style="width: {{question.progress[0]}}%"></div>
+    </div>
+
+    <div id = "question_title"> Question {{question.quiz_id}}</div>
+
+    <div class="col-md-12 text-center">
+        <div id = "question_text">{{question.question}} </div>
+    </div>
+
+    <div class="row center">
+        <div class="col-md-12 center">
+            <img class="img_format" src={{question.image}}>
+        </div>
+    </div>
+    <hr> 
+    
+      <div class = 'row text-center col-md-12'> 
+          <div class = 'col-md-3 drop_a' id = 'drop1' ondrop="drop(event)" ondragover="allowDrop(event)">Ingredient 1</div> 
+          <div class = 'col-md-3 drop_a' id = 'drop2' ondrop="drop(event)" ondragover="allowDrop(event)">Ingredient 2</div> 
+          <div class = 'col-md-3 drop_a' id = 'drop3' ondrop="drop(event)" ondragover="allowDrop(event)">Ingredient 3</div> 
+          <div class = 'col-md-3 drop_a' id = 'drop4' ondrop="drop(event)" ondragover="allowDrop(event)">Ingredient 4</div>
+    </div>
+
+        <div class="row col-md-12 ">
+            {% for each in question.options %}
+            <div class="col-md-3 dropOptions" draggable = "true">
+                <img src={{each}} draggable="false" class="img_format3">
+            </div>
+            {% endfor %}
+        </div>
+
+      </div>
+      <div class="row" id="feedback"></div>
+      
+      <div class="row">
+          <div class = "col-md-11"></div>
+        <div class="col-md-1" id = "checkBtnDiv">
+          <button type="button" class="btn btn-primary" id="checkBtn" disabled>
+            Submit
+          </button>
+        </div>
+        <div class = "col-md-12" id = "change_question"></div>
+    </div>
+
+</div>
+</div>
+{% endblock %}
