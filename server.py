@@ -231,7 +231,7 @@ questions = {
         "options": [["Mashing Ingredients", ""], ["Measuring Alcohol", ""], ["Peeling Ingredients", ""], ["Straining Drinks", ""]]
     },
     "3": {
-        "id": "3",
+        "quiz_id": "3",
         "question": "What is this tool used for?",
         "image": "https://m.media-amazon.com/images/I/61xmg-8MuuL._AC_SL1500_.jpg",
         "hint": "This tool is called a 'Bar Spoon'",
@@ -280,7 +280,7 @@ questions2 = {
                     ["Add 3 ice cubes and shake vigorously until well-chilled.", ""]]
     },
     "3": {
-        "id": "3",
+        "quiz_id": "3",
         "question": "?",
         "image": "https://m.media-amazon.com/images/I/61xmg-8MuuL._AC_SL1500_.jpg",
         "hint": "",
@@ -308,18 +308,20 @@ def quizpage():
 @app.route('/quiz1/<quiz_id>')
 def quiz1(quiz_id): 
     global wrong_ans
+    global questions
     if (quiz_id == "1"):
         wrong_ans = 0
     question = questions[quiz_id]
-    return render_template('quiz1.html', quiz=1, question=question)
+    return render_template('quiz1.html', question=question)
 
 @app.route('/quiz2/<quiz_id>')
 def quiz2(quiz_id): 
     global wrong_ans
+    global questions
     if (quiz_id == "1"):
         wrong_ans = 0
     question = questions2[quiz_id]
-    return render_template('quiz2.html', quiz=2, question=question)
+    return render_template('quiz2.html', question=question)
 
 @app.route('/results')
 def results():

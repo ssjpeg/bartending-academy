@@ -17,10 +17,9 @@
 
   <link rel="stylesheet" href="{{url_for('static', filename='main.css')}}">
 
-    <title>Bartending Basics</title>
   </head>
   <body>
-  
+  <!--
 <div class="container">
     <div class="row">
         <div id="titleFont"href="/">Bartending Basics</div>
@@ -39,7 +38,24 @@
               <a class="navbar-brand" href="/quizpage">TEST</a>
             </div>
           </nav>
+</div>-->
+
+  <header class="header">
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container"><a href="/" class="navbar-brand text-uppercase font-weight-bold">BARTENDING BASICS</a> 
+           
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a href="/" class="nav-link text-uppercase font-weight-bold">HOME </a></li>
+                    <li class="nav-item"><a href="/lesson/tools/" class="nav-link text-uppercase font-weight-bold">TOOLS</a></li>
+                    <li class="nav-item"><a href="/lesson/recipes" class="nav-link text-uppercase font-weight-bold">RECIPES</a></li>
+                    <li class="nav-item"><a href="/quizpage" class="nav-link text-uppercase font-weight-bold">QUIZ</a></li>
+                </ul>
+            
+        </div>
+    </nav>
+  </header>
 </div>
+
     <div class="container">   
       {% block content %}
       {% endblock %}
