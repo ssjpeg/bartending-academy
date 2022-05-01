@@ -34,7 +34,7 @@
       <div class="row">
           <div class = "col-md-11"></div>
         <div class="col-md-1" id = "checkBtnDiv">
-          <button type="button" class="btn btn-primary" id="checkBtn" disabled>
+          <button type="button" class="btn btn-primary btn-dark" id="checkBtn" disabled>
             Submit
           </button>
         </div>
@@ -95,18 +95,21 @@ $(document).ready(function () {
         $(element).click(function(){chooseAnswer($(element))});
     });
     $("#checkBtn").click(checkAnswer);
+    console.log("check btn click");
+    console.log(question.quiz_id)
     $("#next-btn").click(function(){
-            id = parseInt(question.quiz_id);
-            if(id < 3){
-                window.location.href = "/quiz1/" + id;
+            quiz_id = parseInt({{question.quiz_id}});
+            quiz_id += 1;
+            console.log("click")
+            if(quiz_id < 3){
+                window.location.href = "/quiz1/" + quiz_id;
             }
             else
             {
-                window.location.href = "/";
+                window.location.href = "/results";
             }
-            id += 1;
-        }); 
-})
+        });
+    });
 // $("#previous-btn").click(function(){
     //     id = parseInt({{question.quiz_id}});
     //     id -= 1;
