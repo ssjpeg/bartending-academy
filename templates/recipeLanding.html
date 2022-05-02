@@ -8,15 +8,41 @@
 </script>
 
 <div class="container">
-    <div id= "tool-title"> All Recipes </div>
-    <div class = "row" id ="tool-header"> 
-        {% for r in recipes %}
-                <div class = "col-md-2"> 
-                    <a class="linkColor" href = "/lesson/recipes/{{r}}"> 
-                        <div> {{recipes[r].name}} </div>
-                        <div> <img id = "imgGlassL" src = "{{recipes[r].image}}"></div>
+    <div class = "text-center page-title"> 
+        <h1> All Recipes </h1>
+        <hr>
+    </div>
+    <div class = "row">
+        {% for t in recipes %}
+            {% if (recipes[t].id != '4') and (recipes[t].id != '5') %}
+                <div class = "col-md-4"> 
+                    <a class = "" href = "/lesson/recipes/{{t}}"> 
+                        <div class = "lesson-landing-name"> 
+                            <h3>{{recipes[t].name}}</h3>
+                        </div>
+                        <div> 
+                            <img class = "lesson-img-format" src = "{{recipes[t].image}}">
+                        </div>
                     </a>
                 </div>
+            {% endif %}
+        {% endfor %} 
+    </div>
+    <br>
+    <div class = "row">
+        {% for t in recipes %}
+            {% if (recipes[t].id != '1') and (recipes[t].id != '2') and (recipes[t].id != '3')  %}
+                <div class = "col-md-4"> 
+                    <a class = "" href = "/lesson/recipes/{{t}}"> 
+                        <div class = "lesson-landing-name"> 
+                            <h3>{{recipes[t].name}}</h3>
+                        </div>
+                        <div> 
+                            <img class = "lesson-img-format" src = "{{recipes[t].image}}">
+                        </div>
+                    </a>
+                </div>
+            {% endif %}
         {% endfor %} 
     </div>
 </div>
