@@ -50,7 +50,7 @@
             $(element).click(function(){chooseAnswer($(element))});
         });
         $("#checkBtn").click(checkAnswer);
-        $("#next-btn").click(function(){
+        /*$("#next-btn").click(function(){
                 id = parseInt(question.quiz_id);
                 if(id < 3){
                     window.location.href = "/quiz1/" + id;
@@ -60,8 +60,19 @@
                     window.location.href = "/";
                 }
                 id += 1;
-            }); 
+            }); */
     })
+    $(document).on('click','#next-btn', function(){
+      id = parseInt(question.quiz_id);
+      if(id < 3){
+          window.location.href = "/quiz1/" + id;
+      }
+      else
+      {
+          window.location.href = "/";
+      }
+      id += 1;
+    });
 </script>
 
 <div class="container">

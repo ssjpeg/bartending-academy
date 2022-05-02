@@ -91,25 +91,41 @@ function checkAnswer() {
 }
 
 $(document).ready(function () {
-    $(".questionOptions").each(function (index, element) {
-        $(element).click(function(){chooseAnswer($(element))});
-    });
-    $("#checkBtn").click(checkAnswer);
-    console.log("check btn click");
-    console.log(question.quiz_id)
-    $("#next-btn").click(function(){
-            quiz_id = parseInt({{question.quiz_id}});
-            quiz_id += 1;
-            console.log("click")
-            if(quiz_id < 3){
-                window.location.href = "/quiz1/" + quiz_id;
-            }
-            else
-            {
-                window.location.href = "/results";
-            }
-        });
-    });
+  $(".questionOptions").each(function (index, element) {
+      $(element).click(function(){
+        chooseAnswer($(element))
+      });
+  });
+  $("#checkBtn").click(checkAnswer);
+  console.log("check btn click");
+  console.log(question.quiz_id);
+  
+});
+$(document).on('click','#next-btn', function(){
+  quiz_id = parseInt({{question.quiz_id}});
+  quiz_id += 1;
+  console.log("click")
+  if(quiz_id < 4){
+    window.location.href = "/quiz1/" + quiz_id;
+  }
+  else
+  {
+    window.location.href = "/results";  
+  } 
+});
+/*$("#next-btn").click(function(){
+    window.location.href = "/asdf";
+      quiz_id = parseInt({{question.quiz_id}});
+      quiz_id += 1;
+      console.log("click")
+      if(quiz_id < 3){
+          window.location.href = "/quiz1/" + quiz_id;
+      }
+      else
+      {
+          window.location.href = "/results";
+      }
+});*/
 // $("#previous-btn").click(function(){
     //     id = parseInt({{question.quiz_id}});
     //     id -= 1;
