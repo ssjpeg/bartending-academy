@@ -185,13 +185,3 @@ function displayAnswerChoices(){
 
 
 }
-
-function chooseAnswer(){
-    //idfk how to do this i cant even think
-    //like it should be smth like
-    //click button event for tagButton
-    //if the answer chosen matches the answer from quiz_answer_id, then 
-    //addClass(rightAnswer) to the answerButton
-    //else, addClass(wrongAnswer)
-    //also still need to add a hint button, next button, and the quiz score
-}

@@ -86,9 +86,32 @@ function checkAnswer() {
           
         },
       error: function(request, status, error){
+        console.log(request)
+        console.log(status)
+        console.log(error)
       }
   });
 }
+
+function saveAnswer(optionCorrect) {
+    let userData = {"optionCorrect": optionCorrect}
+    $.ajax({
+      type: "POST",
+      url: "/save_data",
+      dataType : "json",
+      contentType: "application/json; charset=utf-8",
+      data: JSON.stringify(userData),
+      success: function (response) {
+          let score=response["score"]
+        },
+      error: function(request, status, error){
+        console.log(request)
+        console.log(status)
+        console.log(error)
+      }
+    })
+}
+
 
 $(document).ready(function () {
   $(".questionOptions").each(function (index, element) {
@@ -113,31 +136,7 @@ $(document).on('click','#next-btn', function(){
     window.location.href = "/results";  
   } 
 });
-/*$("#next-btn").click(function(){
-    window.location.href = "/asdf";
-      quiz_id = parseInt({{question.quiz_id}});
-      quiz_id += 1;
-      console.log("click")
-      if(quiz_id < 3){
-          window.location.href = "/quiz1/" + quiz_id;
-      }
-      else
-      {
-          window.location.href = "/results";
-      }
-});*/
-// $("#previous-btn").click(function(){
-    //     id = parseInt({{question.quiz_id}});
-    //     id -= 1;
-    //     if(id > 0){
-    //         id = id - 1
-    //         window.location.href = "/quiz1/" + id;
-    //         console.log(id)
-    //     }
-    //     else{
-    //         window.location.href = "/quiz1/0"
-    //     }
-    // });
+
 </script>
 
 
