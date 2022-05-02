@@ -211,6 +211,7 @@ def quiz1(quiz_id):
     if (quiz_id == "1"):
         wrong_ans = 0
     question = questions[quiz_id]
+    global score
     return render_template('quiz1.html', question=question)
 
 @app.route('/quiz2/<quiz_id>')
@@ -224,7 +225,7 @@ def quiz2(quiz_id):
 
 @app.route('/results')
 def results():
-    return render_template('results.html', score=100-wrong_ans*3)
+    return render_template('results.html', score=100-wrongAnswer*33)
 
 @app.route('/lesson/tools/<id>')
 def tools(id = None):

@@ -51,12 +51,19 @@ let question = {{question|tojson}};
 let optionCorrect = false;
 let wrongAnswer=0;
 
+
 function chooseAnswer(element){
     $("#checkBtn").prop("disabled", false);
     if ($(element).find(".options").html() == question["answer"]) {
         optionCorrect = true;
+        
+        //console.log("58", optionCorrect)
+        //saveAnswer(optionCorrect);
     } else {
         optionCorrect = false;
+        
+        //console.log("61", optionCorrect)
+        //saveAnswer(optionCorrect);
     }
 }
 
@@ -67,10 +74,12 @@ function checkAnswer() {
         $('.progress-bar').css('width', question.progress[1]+'%').attr('aria-valuenow', question.progress[1]);    
         $("#change_question").html("<div class = 'btn btn-dark' id = 'next-btn'> Next </div>")
         $("#checkBtnDiv").html("")
-        return
-    } else {
-        wrongAnswer += 1;
+        return 
+        console.log("73", optionCorrect) 
+        //console.log("74", score)
+        //score +=33
   }
+  wrongAnswer += 1;
 
   $.ajax({
       type: "POST",
@@ -83,6 +92,8 @@ function checkAnswer() {
           $('.progress-bar').css('width', question.progress[1]+'%').attr(question.progress[1]);   
           $("#change_question").html("<div class = 'btn btn-dark' id = 'next-btn'> Next </div>")
           $("#checkBtnDiv").html("")
+          //console.log("89", score)
+          console.log("90", wrongAnswer)
           
         },
       error: function(request, status, error){
@@ -117,6 +128,7 @@ $(document).ready(function () {
   $(".questionOptions").each(function (index, element) {
       $(element).click(function(){
         chooseAnswer($(element))
+        console.log(optionCorrect)
       });
   });
   $("#checkBtn").click(checkAnswer);
