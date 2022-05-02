@@ -319,3 +319,9 @@ div{
 #white-text{
   color:white;
 }
+
+hr.results{
+  height: 2px;
+  background-color: #FFFFFF;
+  border: none;
+}

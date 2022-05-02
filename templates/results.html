@@ -8,7 +8,30 @@
 
 
 <div class="container">
-    <div class="row">Results: {{score}}</div>
+  <div id = "question_title"> Quiz Performance </div>
+  <hr>
+
+  <div class = "col-md-12">
+    <hr class = "results">
+    <div class="row" id = "question_text">Accuracy: {{score-66}}%</div>
+    <hr class = "results">
+    <div class="row" id = "question_text">Topics to Review:</div>
+    <ul> <li>Tools: Jigger</li> <li>Tools: Muddler</li> </ul>
+    <hr class = "results">
+  </div>
+
+    <div class = "row"> 
+      <button type="button" class="col-md-3 btn btn-lg btn-primary btn-dark center" id="tools" onclick="window.location.href='/lesson/tools';">
+        Review Content
+      </button>
+      <button type="button" class="col-md-3 btn btn-lg btn-primary btn-dark center" id="tools" onclick="window.location.href='/quizpage';">
+        Retake Quizzes
+      </button>
+      <button type="button" class="col-md-3 btn btn-lg btn-primary btn-dark center" id="tools" onclick="window.location.href='https://www.thespruceeats.com/bartending-tips-for-better-drinks-4105954';">
+        Learn More about Bartending
+      </button>
+  </div>
+
   </div>
 </div>
 
