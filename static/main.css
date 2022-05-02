@@ -34,7 +34,6 @@
   margin: auto; 
   text-align: center;
   background-color: black;
-  color: white;
   margin-top: 20px;
   padding-top: 10px;
   padding-bottom: 10px;
@@ -108,8 +107,7 @@
 }
 
 .tool-description{
-  background-color: #fad578;
-  margin-top: 20px;
+  margin-top: 5px;
   font-size: large;
 }
 
@@ -287,7 +285,7 @@ hr {
 div{
   font-family: 'Source Sans Pro', sans-serif;
 
-  color: rgb(21, 17, 68)!important
+  color: rgb(21, 17, 68)
 }
 
 .btn-dark{
@@ -306,3 +304,18 @@ div{
   color: white!important;
 }
 
+.page-title{
+  padding-top: 15px;
+}
+
+.lesson-img-format{
+  height:330px;
+}
+
+.lesson-landing-name{
+  text-align:center;
+}
+
+#white-text{
+  color:white;
+}

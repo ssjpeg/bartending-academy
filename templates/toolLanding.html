@@ -8,15 +8,41 @@
 </script>
 
 <div class="container">
-    <div id= "tool-title"> All Tools </div>
-    <div class = "row" id ="tool-header"> 
+    <div class = "text-center page-title"> 
+        <h1> All Tools </h1>
+        <hr>
+    </div>
+    <div class = "row">
         {% for t in tools %}
-                <div class = "col-md-2"> 
-                    <a class = "linkColor" href = "/lesson/tools/{{t}}"> 
-                        <div> {{tools[t].name}} </div>
-                        <div> <img id = "imgGlassL" src = "{{tools[t].image}}"></div>
+            {% if (tools[t].id != '4') and (tools[t].id != '5') %}
+                <div class = "col-md-4"> 
+                    <a class = "" href = "/lesson/tools/{{t}}"> 
+                        <div class = "lesson-landing-name"> 
+                            <h3>{{tools[t].name}}</h3>
+                        </div>
+                        <div> 
+                            <img class = "lesson-img-format" src = "{{tools[t].image}}">
+                        </div>
                     </a>
                 </div>
+            {% endif %}
+        {% endfor %} 
+    </div>
+    <br>
+    <div class = "row">
+        {% for t in tools %}
+            {% if (tools[t].id != '1') and (tools[t].id != '2') and (tools[t].id != '3')  %}
+                <div class = "col-md-4"> 
+                    <a class = "" href = "/lesson/tools/{{t}}"> 
+                        <div class = "lesson-landing-name"> 
+                            <h3>{{tools[t].name}}</h3>
+                        </div>
+                        <div> 
+                            <img class = "lesson-img-format" src = "{{tools[t].image}}">
+                        </div>
+                    </a>
+                </div>
+            {% endif %}
         {% endfor %} 
     </div>
 </div>

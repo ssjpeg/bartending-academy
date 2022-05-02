@@ -35,13 +35,20 @@
 
 
 <div class="container">
-    <div class = "col-md-4" id = "recipeTitle">{{recipe.name}}</div>
+    <div class = "text-center page-title"> 
+        <h1> {{recipe.name}} </h1>
+        <hr>
+    </div>
     <div class = "col-md-12" id = "rsubHeader">
-        <div>For: {{recipe.purpose}}</div>
-        <div>Ingredients:{% for Ingredient in recipe.ingredients %}
-                {{Ingredient}}.
-            {% endfor %} 
-        </div>
+            <div id = "white-text">
+                For: {{recipe.purpose}}
+            </div>
+            <div id = "white-text">
+                Ingredients:
+                {% for Ingredient in recipe.ingredients %}
+                    {{Ingredient}}.
+                {% endfor %} 
+            </div>
     </div>  
     <div class = "row" id = "centerText"> 
         <div class = "col-md-6"> 
@@ -53,6 +60,7 @@
             <img id = "imgGlass" src = "{{recipe.image}}">
         </div>
     </div>
+    <br>
     <div class="row">
         <div class="col-md-2">
             <div>

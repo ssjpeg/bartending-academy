@@ -10,7 +10,7 @@ lesson_tools = {
         "id": "1",
         "name": "JIGGER",
         "description": "A jigger is an hourglass-shaped measuring tool that allows for bartenders to pour accurate amounts of alcohol into every drink. They are usually made of metal and contain two different measuring amounts on the top and bottom.",
-        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSX-qPeY0JspE5s3MyRNcI_-Gslmb8yMRCE_w&usqp=CAU",
+        "image": "https://m.media-amazon.com/images/I/61I0X5Q8iKL._SL1500_.jpg",
         "video": "https://images.huffingtonpost.com/2015-09-24-1443125482-6520074-02whippedcreamcocktailshaker-thumb.gif",     
     },
     "2":{
@@ -24,7 +24,7 @@ lesson_tools = {
         "id": "3",
         "name": "SHAKER",
         "description": "A cocktail shaker is used to mix drinks. The shaker has three pieces: a metal base, a top, and a cap in the top which fits over a built-in strainer. The cap is removed, the ingredients are poured in, the shaker is capped and shaken briskly, and the drink is poured through the strainer.",
-        "image": "https://m.media-amazon.com/images/I/51ERQMFQBaL._AC_SX425_.jpg",
+        "image": "https://i5.walmartimages.com/asr/fd05936d-4ec6-4941-b771-7e803b8e6be1.92fc2fb516219eb939b34276f5864b6f.jpeg",
         "video": "https://c.tenor.com/9ObzC4ISif4AAAAC/bartender-shake.gif",     
     },
     "4":{
@@ -66,7 +66,7 @@ lesson_recipes = {
                     "Double-strain into a chilled Collins glass.", 
                     "Add club soda to the glass."
                 ],
-        "image": "https://i.pinimg.com/originals/26/cb/a2/26cba2cc8a60a146fd955d950dab3467.jpg",
+        "image": "https://alushlifemanual.com/wp-content/uploads/2020/04/Gin-Fizz-720x720.jpg",
     },
     "3":{
         "id": "3",
