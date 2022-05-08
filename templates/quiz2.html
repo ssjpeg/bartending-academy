@@ -2,52 +2,94 @@
 <script>
 
     let question = {{question|tojson}};
-    let optionCorrect = false;
+    var optionCorrect = true;
     let wrongAnswer=0;
     
-
-    function chooseAnswer(element){
-        $("#checkBtn").prop("disabled", false);
-        if ($(element).find(".options").html() == question["answer"]) {
-            optionCorrect = true;
-        } else {
-            optionCorrect = false;
-        }
-    }
+    var answers = new Array();
     
     function checkAnswer() {
+      if(answers.length <= 0){
         $("#feedback").empty();
-        if (optionCorrect == true) {
-            $("#feedback").text("Correct!")
-            $('.progress-bar').css('width', question.progress[1]+'%').attr('aria-valuenow', question.progress[1]);    
+        $("#feedback").append("No answers submitted!");
+        return
+      }
+      else if(answers.length < 4){
+        $("#feedback").empty();
+        $("#feedback").append("Not enough answers submitted!");
+        return
+      }
+
+      $("#feedback").empty();
+      $("#checkBtn").prop("disabled", false);
+
+      answers.forEach((element, index) =>{
+
+        if(answers[index] != (question.answers)[index]){
+          optionCorrect = false;
+        }
+      });
+
+      console.log(optionCorrect);
+      if (optionCorrect == true) {
+          $("#feedback").text("Correct!")
+          $('.progress-bar').css('width', question.progress[1]+'%').attr('aria-valuenow', question.progress[1]);    
+          $("#change_question").html("<div class = 'btn btn-dark' id = 'next-btn'> Next </div>")
+          $("#checkBtnDiv").html("")
+          return
+      } else {
+          wrongAnswer += 1;
+      }
+
+      $.ajax({
+        type: "POST",
+        url: "/wrong_ans",
+        dataType : "json",
+        contentType: "application/json; charset=utf-8",
+        data: JSON.stringify(wrongAnswer),
+        success: function (response) {
+          $("#feedback").append("Wrong! ");
+          (question.feedback).forEach((element, index) =>{
+            
+            $("#feedback").append(element);
+            
+            if(index != question.feedback.length- 1){
+              $("#feedback").append(", ");
+            }
+            if (index == question.feedback.length - 2)
+            {
+              $("#feedback").append("and ")
+            }
+          });
+
+          $("#feedback").append(" is the correct answer.");
+            $('.progress-bar').css('width', question.progress[1]+'%').attr(question.progress[1]);   
             $("#change_question").html("<div class = 'btn btn-dark' id = 'next-btn'> Next </div>")
             $("#checkBtnDiv").html("")
-            return
-        } else {
-            wrongAnswer += 1;
-      }
-    
-      $.ajax({
-          type: "POST",
-          url: "/wrong_ans",
-          dataType : "json",
-          contentType: "application/json; charset=utf-8",
-          data: JSON.stringify(wrongAnswer),
-          success: function (response) {
-              $("#feedback").text(question.answer + " is the correct answer.");
-              $('.progress-bar').css('width', question.progress[1]+'%').attr(question.progress[1]);   
-              $("#change_question").html("<div class = 'btn btn-dark' id = 'next-btn'> Next </div>")
-              $("#checkBtnDiv").html("")
-              
-            },
-          error: function(request, status, error){
-          }
+            
+          },
+        error: function(request, status, error){
+        }
       });
     }
     
     $(document).ready(function () {
-        $(".questionOptions").each(function (index, element) {
-            $(element).click(function(){chooseAnswer($(element))});
+       $("#checkBtn").prop("disabled", false);
+        $(".dragOptions").each(function (index, element) {
+            $(element).draggable({
+              revert: "invalid",
+              grid: [ 80, 80 ],
+            });
+        });
+        $(".drop_a").each(function (index, element) {
+          $(element).droppable({
+            accept: '.dragOptions',
+            drop: function(event, ui){
+              ui.draggable.draggable({disabled:true});
+              $(this).droppable("disable");
+              let idName = $(ui.draggable).attr('id');
+              answers.push(idName);
+            }
+          });
         });
         $("#checkBtn").click(checkAnswer);
         /*$("#next-btn").click(function(){
@@ -63,16 +105,16 @@
             }); */
     })
     $(document).on('click','#next-btn', function(){
-      id = parseInt(question.quiz_id);
+      id = parseInt(question.next_id);
       if(id < 3){
-          window.location.href = "/quiz1/" + id;
+        window.location.href = "/quiz2/" + id;
       }
       else
       {
-          window.location.href = "/";
+        window.location.href = "/results";
       }
-      id += 1;
     });
+
 </script>
 
 <div class="container">
@@ -93,18 +135,21 @@
     </div>
     <hr> 
     
-      <div class = 'row text-center col-md-12'> 
-          <div class = 'col-md-3 drop_a' id = 'drop1' ondrop="drop(event)" ondragover="allowDrop(event)">Ingredient 1</div> 
-          <div class = 'col-md-3 drop_a' id = 'drop2' ondrop="drop(event)" ondragover="allowDrop(event)">Ingredient 2</div> 
-          <div class = 'col-md-3 drop_a' id = 'drop3' ondrop="drop(event)" ondragover="allowDrop(event)">Ingredient 3</div> 
-          <div class = 'col-md-3 drop_a' id = 'drop4' ondrop="drop(event)" ondragover="allowDrop(event)">Ingredient 4</div>
+    <div class = 'row text-center col-md-12'>
+      <div class = 'col-md-3 drop_a' id = 'drop1' >Ingredient 1</div> 
+      <div class = 'col-md-3 drop_a' id = 'drop2' >Ingredient 2</div> 
+      <div class = 'col-md-3 drop_a' id = 'drop3' >Ingredient 3</div> 
+      <div class = 'col-md-3 drop_a' id = 'drop4' >Ingredient 4</div>
+
     </div>
 
         <div class="row col-md-12 ">
-            {% for each in question.options %}
-            <div class="col-md-3 dropOptions" draggable = "true">
-                <img src={{each}} draggable="false" class="img_format3">
-            </div>
+          {% set count = namespace(value=0) %}
+            {% for each in question.options_images %}
+              {% set count.value = count.value + 1 %}
+              <div class="col-md-3 dragOptions" id = "{{count.value}}">
+                  <img src={{each}}  class="img_format3">
+              </div>
             {% endfor %}
         </div>
 
