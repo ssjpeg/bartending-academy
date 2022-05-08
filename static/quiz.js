@@ -150,7 +150,7 @@ function displayAnswerChoices(){
             quizCol.append("</form>")
             $("#answerChoices").append(quizCol)
 }
-        else if (window.location.href === "http://127.0.0.1:5000/quiz/2" && data_answers["id"] === "3"){
+        if (window.location.href === "http://127.0.0.1:5000/quiz/2" && data_answers["id"] === "3"){
             let quizCol = $("<div class='col-md-12'>")
             let all_options = $("<div class='row col-md-12'>")
 
