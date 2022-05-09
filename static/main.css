@@ -205,6 +205,12 @@ hr {
   font-size: xx-large; 
   font-weight: bold;
 }
+#question_prompt{
+  font-size: large; 
+  font-weight: bold;
+  padding-bottom: 5px;;
+  font-style: italic;
+}
 #review{
   font-size: x-large; 
   font-weight: bold;

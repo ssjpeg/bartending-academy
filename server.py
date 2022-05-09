@@ -50,22 +50,22 @@ lesson_recipes = {
         "name": "MARTINI",
         "purpose": "NYC Evening Bar Visits",
         "ingredients": ["2 oz Gin", "Green Olive", "Vermouth"],
-        "steps": ["Add vermouth to a glass, swish around, pour out.",
-                    "In a separate mixing glass full of ice, add gin.",
-                    "Stir with bar spoon and strain into chilled martini glass.",
-                    "Garnish with a fresh olive."
+        "steps": ["Add vermouth to a glass, swish around, and pour out",
+                    "In a separate mixing glass full of ice, add gin",
+                    "Stir with bar spoon and strain into chilled martini glass",
+                    "Garnish with a fresh olive"
                 ],
         "image": "https://bevvyco.s3.amazonaws.com/img/drinks/cq/wcq/gibson-47d7b654b091d531cab0742cff386314-lg.jpg",
     },
     "2":{
         "id": "2",
         "name": "GIN FIZZ",
-        "purpose": "Celebatory Drink for Big Events",
-        "ingredients": ["2 oz Gin", "1 oz Lemon Juice", "3/4 oz Simple Syrup", "Egg White", "1 oz Club Soda"],
-        "steps": ["Add gin, lemon juice, syrup, and egg white to a shaker and vigorously dry-shake (without ice) for 15 seconds.",
-                    "Add 3 ice cubes and shake vigorously until well-chilled.",
-                    "Double-strain into a chilled Collins glass.", 
-                    "Add club soda to the glass."
+        "purpose": "Celebratory Drink for Big Events",
+        "ingredients": ["2 oz Gin", "1 oz Lemon Juice", "Egg White", "1 oz Club Soda"],
+        "steps": ["Add gin, lemon juice, and egg white to a shaker and vigorously dry-shake (without ice) for 15 seconds",
+                    "Add 3 ice cubes and shake vigorously until well-chilled",
+                    "Double-strain into a chilled Collins glass", 
+                    "Add Club soda to the glass"
                 ],
         "image": "https://alushlifemanual.com/wp-content/uploads/2020/04/Gin-Fizz-720x720.jpg",
     },
@@ -73,11 +73,11 @@ lesson_recipes = {
         "id": "3",
         "name": "TEQUILA SUNRISE",
         "purpose": "Hot Brunch Days",
-        "ingredients": ["1 oz Tequila", "3/4 cup Orange Juice", "Grenadine Syrup", "Orange", "Cherry"],
+        "ingredients": ["1 oz Tequila", "3/4 cup Orange Juice", "Syrup", "Orange Slice"],
         "steps": ["Add Tequila and OJ to a shaker and shake.",
-                    "Fill a chilled 12 oz glass with ice cubes and add the mixture mixture.",
-                    "Add Grenadine", 
-                    "Garnish with a slice of orange and a maraschino cherry."
+                    "Fill a chilled 12 oz glass with ice cubes and add the mixture",
+                    "Add Syrup", 
+                    "Garnish with a slice of orange and a maraschino cherry"
                 ],
         "image": "https://www.averiecooks.com/wp-content/uploads/2015/08/tequilasunrise-16.jpg",
     },
@@ -86,10 +86,10 @@ lesson_recipes = {
         "name": "MARGARITA",
         "purpose": "A Casual, Healthy Drink",
         "ingredients": ["2 oz Blanqo Tequila", "1/2 oz Orange Liquer", "1 oz Lime Juice", "1/2 oz Agave Syrup", "Lime Wheel", "Kosher Salt"],
-        "steps": ["Add tequila, orange liqueur, lime juice and agave syrup to a cocktail shaker filled with ice.",
-                    "Shake until well-chilled."
-                    "Strain into a rocks glass over fresh ice.",
-                    "Garnish with a lime wheel and kosher salt rim."
+        "steps": ["Add tequila, orange liqueur, lime juice and agave syrup to a cocktail shaker filled with ice",
+                    "Shake until well-chilled",
+                    "Strain into a rocks glass over fresh ice",
+                    "Garnish with a lime wheel and kosher salt rim"
                 ],
         "image": "https://www.seriouseats.com/thmb/PIVqgfUtdn74p6KurPXlrNwlxKs=/1125x1125/smart/filters:no_upscale()/__opt__aboutcom__coeus__resources__content_migration__serious_eats__seriouseats.com__recipes__images__2015__04__20150323-cocktails-vicky-wasik-margarita-c84b154e757d43688de15dc8f8ca0de9.jpg",
     },
@@ -97,11 +97,11 @@ lesson_recipes = {
         "id": "5",
         "name": "MOJITO",
         "purpose": "Warm Summer Evenings",
-        "ingredients": ["3 Mint Leaves", "1/2 oz Simple Syrup", "2 oz White Rum", "3/4 oz Lime Juice", "Club Soda", "Mint Sprig", "Lime Wheel"],
-        "steps": ["Lightly muddle the mint with the simple syrup in a shaker.",
-                    "Add the rum, lime juice and ice, and give it a brief shake.",
-                    "Strain into a highball glass over fresh ice.", 
-                    "Top with the club soda and garnish with a mint sprig and lime wheel."
+        "ingredients": ["1/2 oz Simple Syrup", "2 oz White Rum", "3/4 oz Lime Juice", "Club Soda"],
+        "steps": ["Lightly muddle the mint with the simple syrup in a shaker",
+                    "Add the rum, lime juice and ice, and give it a brief shake",
+                    "Strain into a highball glass over fresh ice", 
+                    "Top with the club soda and garnish with a mint sprig and lime wheel"
                 ],
         "image": "https://cdn.loveandlemons.com/wp-content/uploads/2020/07/mojito.jpg",
     },
@@ -148,13 +148,13 @@ questions = {
 questions2 = {
     "1": {
         "quiz_id" : "1",
-        "question": "What do you need to make a Martini?",
-        "topic": "Martini",
-        "image": "https://3f4c2184e060ce99111b-f8c0985c8cb63a71df5cb7fd729edcab.ssl.cf2.rackcdn.com/media/16258/vodkamartini.jpg",
+        "question": "What do you need to make a Tequila Sunrise?",
+        "topic": "Tequila Sunrise",
+        "image": "https://www.averiecooks.com/wp-content/uploads/2015/08/tequilasunrise-16.jpg",
         "hint": "",
         "next_id": "2",
         "progress": ["0", "33"],
-        "answers": ["10", "15", "14", "4"],
+        "answers": ["11", "16", "13", "9"],
         "options_images": [
                     ["Lemon Juice", "http://cdn.shopify.com/s/files/1/0275/0853/9474/products/sicilia-organic-italian-lemon-squeeze-with-lemon-juice-4-oz-sauces-condiments-sicilia-106756.jpg?v=1603135751"], 
                     ["Milk", "https://www.meijer.com/content/dam/meijer/product/0004/12/5010/20/0004125010200_2_A1C1_1200.png"],
@@ -164,17 +164,17 @@ questions2 = {
                     ["Rum", "https://images.immediate.co.uk/production/volatile/sites/30/2021/02/Cape-Cornwall-white-rum-1-142db09.jpg"], 
                     ["Ginger Beer", "https://theaustralianfoodshop.com/wp-content/uploads/2021/03/bundaberg-ginger-beer-375ml.jpeg"],
                     ["Lime Juice", "https://i5.walmartimages.com/asr/9890d72f-c487-42d9-afac-5f1c03c442ff_1.75f6a1d66a12e7d7a4b76f8ea6b47380.jpeg"],
-                    ["Orange", "https://media.istockphoto.com/photos/slice-of-orange-picture-id185311615?k=20&m=185311615&s=612x612&w=0&h=XRDJ5CC9Irit4uPVLxBkFVK_hZJcGXg4HpAbTKwvTgU="],
+                    ["Orange Slice", "https://media.istockphoto.com/photos/slice-of-orange-picture-id185311615?k=20&m=185311615&s=612x612&w=0&h=XRDJ5CC9Irit4uPVLxBkFVK_hZJcGXg4HpAbTKwvTgU="],
                     ["Vermouth", "https://d1h1synnevvfsx.cloudfront.net/pub/media/catalog/product/cache/ebc6733575d5c8d1cd0f057bf2f42791/2/0/2020_10_09_5409.jpg"],
                     ["Tequila", "https://products3.imgix.drizly.com/ci-patron-silver-25fa130a809ea038.jpeg?auto=format%2Ccompress&ch=Width%2CDPR&fm=jpg&q=20"],
                     ["Club Soda", "https://i5.walmartimages.com/asr/8143241c-9a91-4369-97a1-c69c4c4fd0f0.6bec6401522490eda985c6897714bb20.jpeg"],
                     ["Syrup", "https://produits.bienmanger.com/14257-0w0h0_Cocktails_Set_Syrup.jpg"], 
                     ["Bar Spoon", "https://m.media-amazon.com/images/I/61xmg-8MuuL._AC_SL1500_.jpg"],
                     ["Gin", "https://cdn.shopify.com/s/files/1/0013/2477/7569/products/aag_960x.jpg?v=1597696572"], 
-                    ["Mint Leaves", "https://s.cornershopapp.com/product-images/2910101.jpg?versionId=hmwk5qtMHnhd7UIU1ql6.ZbkgRzcNroC"]
+                    ["Orange Juice", "https://images.heb.com/is/image/HEBGrocery/000543834?fit=constrain,1&wid=800&hei=800&fmt=jpg&qlt=85,0&resMode=sharp2&op_usm=1.75,0.3,2,0"]
                     ],
         "options_nums": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16"],
-        "feedback": ["Vermouth", "Gin", "Bar Spoon", "Olive"]
+        "feedback": ["Tequila", "Orange Juice", "Syrup", "Orange Slice"]
     },
     "2": {
         "quiz_id": "2",
@@ -231,7 +231,7 @@ questions2 = {
                     ["Syrup", "https://produits.bienmanger.com/14257-0w0h0_Cocktails_Set_Syrup.jpg"], 
                     ["Bar Spoon", "https://m.media-amazon.com/images/I/61xmg-8MuuL._AC_SL1500_.jpg"],
                     ["Gin", "https://cdn.shopify.com/s/files/1/0013/2477/7569/products/aag_960x.jpg?v=1597696572"],
-                    ["Mint Leaves", "https://s.cornershopapp.com/product-images/2910101.jpg?versionId=hmwk5qtMHnhd7UIU1ql6.ZbkgRzcNroC"]
+                    ["Garlic Powder", "https://i5.walmartimages.com/asr/9ef999d2-a1d2-4ab7-bde3-70995f9aa155_1.3979fa6701d2b8528eb2d8e9aa6ead68.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF"]
                     ],
         "options_nums": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16"],
         "feedback": ["Syrup", "Rum", "Lime Juice", "Club Soda"]
