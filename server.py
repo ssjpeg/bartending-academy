@@ -4,6 +4,7 @@ from flask import Response, request, jsonify
 app = Flask(__name__)
 
 wrongAnswer = 0
+wrongs = []
 
 lesson_tools = {
     "1":{
@@ -112,6 +113,7 @@ questions = {
     "1": {
         "quiz_id" : "1",
         "question": "What is this tool used for?",
+        "topic": "Jigger",
         "image": "https://static.restaurantsupply.com/media/catalog/product/cache/58705eee992a0d7bab305099af29f9ee/a/m/american-metalcraft-j202_1_1.jpg",
         "hint": "This tool is called a 'jigger'",
         "next_id": "2",
@@ -122,6 +124,7 @@ questions = {
     "2": {
         "quiz_id": "2",
         "question": "What is this tool used for?",
+        "topic": "Muddler",
         "image": "https://m.media-amazon.com/images/I/51JwNh0iftL._AC_SL1400_.jpg",
         "hint": "This tool is called a 'muddler'",
         "next_id": "3",
@@ -132,6 +135,7 @@ questions = {
     "3": {
         "quiz_id": "3",
         "question": "What is this tool used for?",
+        "topic": "Bar Spoon",
         "image": "https://m.media-amazon.com/images/I/61xmg-8MuuL._AC_SL1500_.jpg",
         "hint": "This tool is called a 'Bar Spoon'",
         "next_id": "end",
@@ -145,67 +149,91 @@ questions2 = {
     "1": {
         "quiz_id" : "1",
         "question": "What do you need to make a Martini?",
+        "topic": "Martini",
         "image": "https://3f4c2184e060ce99111b-f8c0985c8cb63a71df5cb7fd729edcab.ssl.cf2.rackcdn.com/media/16258/vodkamartini.jpg",
         "hint": "",
         "next_id": "2",
         "progress": ["0", "33"],
-        "answers": ["6", "10", "9", "1"],
+        "answers": ["10", "15", "14", "4"],
         "options_images": [
-                    "https://cdn.shopify.com/s/files/1/0013/2477/7569/products/aag_960x.jpg?v=1597696572",
-                    "https://www.meijer.com/content/dam/meijer/product/0004/12/5010/20/0004125010200_2_A1C1_1200.png",
-                    "https://www.dolivotastingbar.com/wp-content/uploads/2019/05/manzanilla-olives.jpg",
-                    "https://www.absolut.com/globalassets/images/products/absolut-vodka/atlas/atlas_absolut-vodka_1000ml_4x.jpg",
-                    "https://theaustralianfoodshop.com/wp-content/uploads/2021/03/bundaberg-ginger-beer-375ml.jpeg",
-                    
-                    "https://i5.walmartimages.com/asr/9890d72f-c487-42d9-afac-5f1c03c442ff_1.75f6a1d66a12e7d7a4b76f8ea6b47380.jpeg",
-                    "https://media.istockphoto.com/photos/slice-of-orange-picture-id185311615?k=20&m=185311615&s=612x612&w=0&h=XRDJ5CC9Irit4uPVLxBkFVK_hZJcGXg4HpAbTKwvTgU=",
-                    "https://d1h1synnevvfsx.cloudfront.net/pub/media/catalog/product/cache/ebc6733575d5c8d1cd0f057bf2f42791/2/0/2020_10_09_5409.jpg",
-                    "https://products3.imgix.drizly.com/ci-patron-silver-25fa130a809ea038.jpeg?auto=format%2Ccompress&ch=Width%2CDPR&fm=jpg&q=20",
-                    "https://i5.walmartimages.com/asr/8143241c-9a91-4369-97a1-c69c4c4fd0f0.6bec6401522490eda985c6897714bb20.jpeg",
+                    ["Lemon Juice", "http://cdn.shopify.com/s/files/1/0275/0853/9474/products/sicilia-organic-italian-lemon-squeeze-with-lemon-juice-4-oz-sauces-condiments-sicilia-106756.jpg?v=1603135751"], 
+                    ["Milk", "https://www.meijer.com/content/dam/meijer/product/0004/12/5010/20/0004125010200_2_A1C1_1200.png"],
+                    ["Egg White", "https://img.freepik.com/free-photo/boiled-egg-white-background_55883-479.jpg"],
+                    ["Olive", "https://cdn.create.vista.com/api/media/small/174885620/stock-photo-olives-on-a-white-background"],
+                    ["Vodka", "https://www.absolut.com/globalassets/images/products/absolut-vodka/atlas/atlas_absolut-vodka_1000ml_4x.jpg"],
+                    ["Rum", "https://images.immediate.co.uk/production/volatile/sites/30/2021/02/Cape-Cornwall-white-rum-1-142db09.jpg"], 
+                    ["Ginger Beer", "https://theaustralianfoodshop.com/wp-content/uploads/2021/03/bundaberg-ginger-beer-375ml.jpeg"],
+                    ["Lime Juice", "https://i5.walmartimages.com/asr/9890d72f-c487-42d9-afac-5f1c03c442ff_1.75f6a1d66a12e7d7a4b76f8ea6b47380.jpeg"],
+                    ["Orange", "https://media.istockphoto.com/photos/slice-of-orange-picture-id185311615?k=20&m=185311615&s=612x612&w=0&h=XRDJ5CC9Irit4uPVLxBkFVK_hZJcGXg4HpAbTKwvTgU="],
+                    ["Vermouth", "https://d1h1synnevvfsx.cloudfront.net/pub/media/catalog/product/cache/ebc6733575d5c8d1cd0f057bf2f42791/2/0/2020_10_09_5409.jpg"],
+                    ["Tequila", "https://products3.imgix.drizly.com/ci-patron-silver-25fa130a809ea038.jpeg?auto=format%2Ccompress&ch=Width%2CDPR&fm=jpg&q=20"],
+                    ["Club Soda", "https://i5.walmartimages.com/asr/8143241c-9a91-4369-97a1-c69c4c4fd0f0.6bec6401522490eda985c6897714bb20.jpeg"],
+                    ["Syrup", "https://produits.bienmanger.com/14257-0w0h0_Cocktails_Set_Syrup.jpg"], 
+                    ["Bar Spoon", "https://m.media-amazon.com/images/I/61xmg-8MuuL._AC_SL1500_.jpg"],
+                    ["Gin", "https://cdn.shopify.com/s/files/1/0013/2477/7569/products/aag_960x.jpg?v=1597696572"], 
+                    ["Mint Leaves", "https://s.cornershopapp.com/product-images/2910101.jpg?versionId=hmwk5qtMHnhd7UIU1ql6.ZbkgRzcNroC"]
                     ],
-        "options_nums": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
+        "options_nums": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16"],
         "feedback": ["Vermouth", "Gin", "Bar Spoon", "Olive"]
     },
     "2": {
         "quiz_id": "2",
         "question": "What is the procedure for making a Gin Fizz?",
+        "topic": "Gin Fizz",
         "image": "https://www.liquor.com/thmb/ER6DAmPfS6RSQo3S4XkopdRpMv0=/720x720/smart/filters:no_upscale()/gin-fizz-720x720-primary-v3-2c1390963d014e35a01d741df2f9ae77.jpg",
         "hint": "",
         "next_id": "3",
         "progress": ["33", "67"],
-        "answers": ["10", "4", "2", "1"],
-        "options_images": ["https://i5.walmartimages.com/asr/8143241c-9a91-4369-97a1-c69c4c4fd0f0.6bec6401522490eda985c6897714bb20.jpeg",
-                    "https://static.toiimg.com/photo/69217490.cms",
-                    "https://theaustralianfoodshop.com/wp-content/uploads/2021/03/bundaberg-ginger-beer-375ml.jpeg",
-                    "https://i5.walmartimages.com/asr/9890d72f-c487-42d9-afac-5f1c03c442ff_1.75f6a1d66a12e7d7a4b76f8ea6b47380.jpeg",
-                    "https://media.istockphoto.com/photos/slice-of-orange-picture-id185311615?k=20&m=185311615&s=612x612&w=0&h=XRDJ5CC9Irit4uPVLxBkFVK_hZJcGXg4HpAbTKwvTgU=",
-                    "https://d1h1synnevvfsx.cloudfront.net/pub/media/catalog/product/cache/ebc6733575d5c8d1cd0f057bf2f42791/2/0/2020_10_09_5409.jpg",
-                    "https://products3.imgix.drizly.com/ci-patron-silver-25fa130a809ea038.jpeg?auto=format%2Ccompress&ch=Width%2CDPR&fm=jpg&q=20",
-                    "https://www.meijer.com/content/dam/meijer/product/0004/12/5010/20/0004125010200_2_A1C1_1200.png",
-                    "https://cdn.shopify.com/s/files/1/0096/0276/0755/products/bp-red-knob-bar-spoon-web-800_700x700.jpg?v=1568655343",
-                    "https://cdn.shopify.com/s/files/1/0013/2477/7569/products/aag_960x.jpg?v=1597696572"],
-        "options_nums": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
+        "answers": ["15", "1", "3", "12"],
+        "options_images": [
+                    ["Lemon Juice", "http://cdn.shopify.com/s/files/1/0275/0853/9474/products/sicilia-organic-italian-lemon-squeeze-with-lemon-juice-4-oz-sauces-condiments-sicilia-106756.jpg?v=1603135751"], 
+                    ["Milk", "https://www.meijer.com/content/dam/meijer/product/0004/12/5010/20/0004125010200_2_A1C1_1200.png"],
+                    ["Egg White", "https://img.freepik.com/free-photo/boiled-egg-white-background_55883-479.jpg"],
+                    ["Olive", "https://cdn.create.vista.com/api/media/small/174885620/stock-photo-olives-on-a-white-background"],
+                    ["Vodka", "https://www.absolut.com/globalassets/images/products/absolut-vodka/atlas/atlas_absolut-vodka_1000ml_4x.jpg"],
+                    ["Rum", "https://images.immediate.co.uk/production/volatile/sites/30/2021/02/Cape-Cornwall-white-rum-1-142db09.jpg"], 
+                    ["Ginger Beer", "https://theaustralianfoodshop.com/wp-content/uploads/2021/03/bundaberg-ginger-beer-375ml.jpeg"],
+                    ["Lime Juice", "https://i5.walmartimages.com/asr/9890d72f-c487-42d9-afac-5f1c03c442ff_1.75f6a1d66a12e7d7a4b76f8ea6b47380.jpeg"],
+                    ["Orange", "https://media.istockphoto.com/photos/slice-of-orange-picture-id185311615?k=20&m=185311615&s=612x612&w=0&h=XRDJ5CC9Irit4uPVLxBkFVK_hZJcGXg4HpAbTKwvTgU="],
+                    ["Vermouth", "https://d1h1synnevvfsx.cloudfront.net/pub/media/catalog/product/cache/ebc6733575d5c8d1cd0f057bf2f42791/2/0/2020_10_09_5409.jpg"],
+                    ["Tequila", "https://products3.imgix.drizly.com/ci-patron-silver-25fa130a809ea038.jpeg?auto=format%2Ccompress&ch=Width%2CDPR&fm=jpg&q=20"],
+                    ["Club Soda", "https://i5.walmartimages.com/asr/8143241c-9a91-4369-97a1-c69c4c4fd0f0.6bec6401522490eda985c6897714bb20.jpeg"],
+                    ["Syrup", "https://produits.bienmanger.com/14257-0w0h0_Cocktails_Set_Syrup.jpg"], 
+                    ["Bar Spoon", "https://m.media-amazon.com/images/I/61xmg-8MuuL._AC_SL1500_.jpg"],
+                    ["Gin", "https://cdn.shopify.com/s/files/1/0013/2477/7569/products/aag_960x.jpg?v=1597696572"],
+                    ["Mint Leaves", "https://s.cornershopapp.com/product-images/2910101.jpg?versionId=hmwk5qtMHnhd7UIU1ql6.ZbkgRzcNroC"]
+                    ],
+        "options_nums": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16"],
         "feedback": ["Gin", "Lemon Juice", "Egg White", "Club Soda"]
     },
     "3": {
         "quiz_id": "3",
         "question": "What is the procedure for making a Mojito?",
+        "topic": "Mojito",
         "image": "https://cdn.loveandlemons.com/wp-content/uploads/2020/07/mojito.jpg",
         "hint": "",
         "next_id": "4",
         "progress": ["67", "100"],
-        "answers": ["1", "4", "3", "9"],
-        "options_images": ["https://i5.walmartimages.com/asr/6b2235b8-b865-405c-b15d-0cd70d161f12_2.db3503a66ff506b000fa6df02c721224.jpeg",
-                    "https://theaustralianfoodshop.com/wp-content/uploads/2021/03/bundaberg-ginger-beer-375ml.jpeg",
-                    "https://i5.walmartimages.com/asr/9890d72f-c487-42d9-afac-5f1c03c442ff_1.75f6a1d66a12e7d7a4b76f8ea6b47380.jpeg",
-                    "https://products3.imgix.drizly.com/ci-captain-morgan-original-spiced-rum-50b42d45bcd74a31.jpeg?auto=format%2Ccompress&ch=Width%2CDPR&fm=jpg&q=20",
-                    "https://d1h1synnevvfsx.cloudfront.net/pub/media/catalog/product/cache/ebc6733575d5c8d1cd0f057bf2f42791/2/0/2020_10_09_5409.jpg",
-                    "https://products3.imgix.drizly.com/ci-patron-silver-25fa130a809ea038.jpeg?auto=format%2Ccompress&ch=Width%2CDPR&fm=jpg&q=20",
-                    "https://www.meijer.com/content/dam/meijer/product/0004/12/5010/20/0004125010200_2_A1C1_1200.png",
-                    "https://cdn.shopify.com/s/files/1/0096/0276/0755/products/bp-red-knob-bar-spoon-web-800_700x700.jpg?v=1568655343",
-                    "https://i5.walmartimages.com/asr/8143241c-9a91-4369-97a1-c69c4c4fd0f0.6bec6401522490eda985c6897714bb20.jpeg",
-                    "https://cdn.shopify.com/s/files/1/0013/2477/7569/products/aag_960x.jpg?v=1597696572"],
-        "options_nums": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
+        "answers": ["13", "6", "8", "12"],
+        "options_images": [
+                    ["Lemon Juice", "http://cdn.shopify.com/s/files/1/0275/0853/9474/products/sicilia-organic-italian-lemon-squeeze-with-lemon-juice-4-oz-sauces-condiments-sicilia-106756.jpg?v=1603135751"], 
+                    ["Milk", "https://www.meijer.com/content/dam/meijer/product/0004/12/5010/20/0004125010200_2_A1C1_1200.png"],
+                    ["Egg White", "https://img.freepik.com/free-photo/boiled-egg-white-background_55883-479.jpg"],
+                    ["Olive", "https://cdn.create.vista.com/api/media/small/174885620/stock-photo-olives-on-a-white-background"],
+                    ["Vodka", "https://www.absolut.com/globalassets/images/products/absolut-vodka/atlas/atlas_absolut-vodka_1000ml_4x.jpg"],
+                    ["Rum", "https://images.immediate.co.uk/production/volatile/sites/30/2021/02/Cape-Cornwall-white-rum-1-142db09.jpg"], 
+                    ["Ginger Beer", "https://theaustralianfoodshop.com/wp-content/uploads/2021/03/bundaberg-ginger-beer-375ml.jpeg"],
+                    ["Lime Juice", "https://i5.walmartimages.com/asr/9890d72f-c487-42d9-afac-5f1c03c442ff_1.75f6a1d66a12e7d7a4b76f8ea6b47380.jpeg"],
+                    ["Orange", "https://media.istockphoto.com/photos/slice-of-orange-picture-id185311615?k=20&m=185311615&s=612x612&w=0&h=XRDJ5CC9Irit4uPVLxBkFVK_hZJcGXg4HpAbTKwvTgU="],
+                    ["Vermouth", "https://d1h1synnevvfsx.cloudfront.net/pub/media/catalog/product/cache/ebc6733575d5c8d1cd0f057bf2f42791/2/0/2020_10_09_5409.jpg"],
+                    ["Tequila", "https://products3.imgix.drizly.com/ci-patron-silver-25fa130a809ea038.jpeg?auto=format%2Ccompress&ch=Width%2CDPR&fm=jpg&q=20"],
+                    ["Club Soda", "https://i5.walmartimages.com/asr/8143241c-9a91-4369-97a1-c69c4c4fd0f0.6bec6401522490eda985c6897714bb20.jpeg"],
+                    ["Syrup", "https://produits.bienmanger.com/14257-0w0h0_Cocktails_Set_Syrup.jpg"], 
+                    ["Bar Spoon", "https://m.media-amazon.com/images/I/61xmg-8MuuL._AC_SL1500_.jpg"],
+                    ["Gin", "https://cdn.shopify.com/s/files/1/0013/2477/7569/products/aag_960x.jpg?v=1597696572"],
+                    ["Mint Leaves", "https://s.cornershopapp.com/product-images/2910101.jpg?versionId=hmwk5qtMHnhd7UIU1ql6.ZbkgRzcNroC"]
+                    ],
+        "options_nums": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16"],
         "feedback": ["Syrup", "Rum", "Lime Juice", "Club Soda"]
     }
 }
@@ -226,26 +254,29 @@ def quizpage():
 
 @app.route('/quiz1/<quiz_id>')
 def quiz1(quiz_id): 
-    global wrong_ans
+    # global wrong_ans
     global questions
-    if (quiz_id == "1"):
-        wrong_ans = 0
+    # if (quiz_id == "1"):
+    #     wrong_ans = 0
     question = questions[quiz_id]
-    global score
+    # global score
     return render_template('quiz1.html', question=question)
 
 @app.route('/quiz2/<quiz_id>')
 def quiz2(quiz_id): 
-    global wrong_ans
+    # global wrong_ans
     global questions
-    if (quiz_id == "1"):
-        wrong_ans = 0
+    # if (quiz_id == "1"):
+    #     wrong_ans = 0
     question = questions2[quiz_id]
     return render_template('quiz2.html', question=question)
 
 @app.route('/results')
 def results():
-    return render_template('results.html', score=100-wrongAnswer*33)
+    global accuracy 
+    global wrongs
+    accuracy = abs(100-wrongAnswer*16.67)
+    return render_template('results.html', score=accuracy, wrongs = wrongs)
 
 @app.route('/lesson/tools/<id>')
 def tools(id = None):
@@ -278,6 +309,21 @@ def wrong_ans():
     global wrongAnswer
     json_data = request.get_json()
     wrongAnswer+=int(json_data)
+    return jsonify(0)
+
+@app.route('/wrong_topics', methods=['GET', 'POST'])
+def wrong_topics():
+    global wrongs
+    json_data = request.get_json()
+    wrongs.append(json_data)
+    return jsonify(0)
+
+@app.route('/reset_score', methods=['GET', 'POST'])
+def reset_score():
+    global wrongAnswer
+    global wrongs
+    wrongAnswer = 0
+    wrongs = []
     return jsonify(0)
 
 @app.route('/save_data', methods=['GET', 'POST'])

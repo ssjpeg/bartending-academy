@@ -71,8 +71,15 @@ function checkAnswer() {
     $("#feedback").empty();
     if (optionCorrect == true) {
         $("#feedback").text("Correct!")
-        $('.progress-bar').css('width', question.progress[1]+'%').attr('aria-valuenow', question.progress[1]);    
-        $("#change_question").html("<div class = 'btn btn-dark' id = 'next-btn'> Next </div>")
+        $('.progress-bar').css('width', question.progress[1]+'%').attr('aria-valuenow', question.progress[1]);
+        
+        if (parseInt({{question.quiz_id}}) + 1 >=4){
+            $("#change_question").html("<div class = 'btn btn-dark' id = 'next-btn'> Enter Next Quiz </div>");
+          }  else {
+            $("#change_question").html("<div class = 'btn btn-dark' id = 'next-btn'> Next </div>")
+          }  
+
+        // $("#change_question").html("<div class = 'btn btn-dark' id = 'next-btn'> Next </div>")
         $("#checkBtnDiv").html("")
         return 
         console.log("73", optionCorrect) 
@@ -89,8 +96,15 @@ function checkAnswer() {
       data: JSON.stringify(wrongAnswer),
       success: function (response) {
           $("#feedback").text("Wrong! " + question.answer + " is the correct answer.");
-          $('.progress-bar').css('width', question.progress[1]+'%').attr(question.progress[1]);   
-          $("#change_question").html("<div class = 'btn btn-dark' id = 'next-btn'> Next </div>")
+          $('.progress-bar').css('width', question.progress[1]+'%').attr(question.progress[1]);  
+          
+          if (parseInt({{question.quiz_id}}) + 1 >=4){
+            $("#change_question").html("<div class = 'btn btn-dark' id = 'next-btn'> Enter Next Quiz </div>");
+          }  else {
+            $("#change_question").html("<div class = 'btn btn-dark' id = 'next-btn'> Next </div>")
+          }  
+
+          // $("#change_question").html("<div class = 'btn btn-dark' id = 'next-btn'> Next </div>")
           $("#checkBtnDiv").html("")
           //console.log("89", score)
           console.log("90", wrongAnswer)
@@ -102,6 +116,22 @@ function checkAnswer() {
         console.log(error)
       }
   });
+
+  wrongs = "{{question.topic}}"
+  $.ajax({
+        type: "POST",
+        url: "/wrong_topics",
+        dataType : "json",
+        contentType: "application/json; charset=utf-8",
+        data: JSON.stringify(wrongs),
+        success: function (response) {
+          },
+        error: function(request, status, error){
+          console.log(request)
+          console.log(status)
+          console.log(error)
+      }
+    })
 }
 
 function saveAnswer(optionCorrect) {

@@ -6,10 +6,23 @@
   $(document).ready(function () {
     console.log(quizzes);
     $("#tools").click(function() {
-      window.location.href = "/quiz1/1";
-    });
-    $("#drinks").click(function() {
-      window.location.href = "/quiz2/1";
+      let wrong_ans = 0;
+      console.log("kjhjhkjh")
+      $.ajax({
+        type: "POST",
+        url: "/reset_score",
+        dataType : "json",
+        contentType: "application/json; charset=utf-8",
+        data: JSON.stringify(wrong_ans),
+        success: function (response) {
+          window.location.href = "/quiz1/1";
+          },
+        error: function(request, status, error){
+          console.log(request)
+          console.log(status)
+          console.log(error)
+      }
+    })
     });
   })
   
@@ -17,7 +30,7 @@
 
 <div class="container">
   <div class = "text-center page-title"> 
-    <h1> Quiz Selection </h1>
+    <h1> Test your Knowledge </h1>
     <hr>
 
   </div>
@@ -32,18 +45,12 @@
   </div>
 
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-12">
       <hr> 
       <button type="button" class="btn btn-lg btn-primary btn-dark center" id="tools">
-        {{quizzes[0][0]}} Quiz
+        Start
       </button>
     </div>
-    <div class="col-md-6">
-      <hr> 
-      <button type="button" class="btn btn-lg btn-primary btn-dark center" id="drinks">
-        {{quizzes[1][0]}} Quiz
-      </button>
-    </div> 
 </div>
 </div>
 

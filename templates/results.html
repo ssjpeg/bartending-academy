@@ -3,7 +3,18 @@
 {% block content %}
 
 <script>
-    let score = {{ score | tojson }} 
+    let score = {{score | tojson }}
+    let wrongs = {{wrongs | tojson }}
+
+    $(document).ready(function () {
+    if (wrongs.length == 0){
+      $("#review").html("Great Work!")
+    }
+    else{
+      $("#review").append("<div class = 'col-md-12'> <div> Topics to Review</div> <div><ul> {% for each in wrongs %}<li>{{each}}</li> {% endfor %} </ul></div>")
+    }
+  })
+    
 </script>
 
 
@@ -13,10 +24,9 @@
 
   <div class = "col-md-12">
     <hr class = "results">
-    <div class="row" id = "question_text">Accuracy: {{score-66}}%</div>
+    <div class="row col-md-12" id = "question_text">Accuracy: {{'%0.0f'|format(score|float)}}%</div>
     <hr class = "results">
-    <div class="row" id = "question_text">Topics to Review:</div>
-    <ul> <li>Tools: Jigger</li> <li>Tools: Muddler</li> </ul>
+    <div class="row" id = "review"></div>
     <hr class = "results">
   </div>
 

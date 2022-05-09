@@ -32,8 +32,13 @@
       console.log(optionCorrect);
       if (optionCorrect == true) {
           $("#feedback").text("Correct!")
-          $('.progress-bar').css('width', question.progress[1]+'%').attr('aria-valuenow', question.progress[1]);    
-          $("#change_question").html("<div class = 'btn btn-dark' id = 'next-btn'> Next </div>")
+          $('.progress-bar').css('width', question.progress[1]+'%').attr('aria-valuenow', question.progress[1]);  
+          if (parseInt({{question.quiz_id}}) + 1>=4){
+            $("#change_question").html("<div class = 'btn btn-dark' id = 'next-btn'> See Results </div>");
+          }  else {
+            $("#change_question").html("<div class = 'btn btn-dark' id = 'next-btn'> Next </div>")
+          }  
+          // $("#change_question").html("<div class = 'btn btn-dark' id = 'next-btn'> Next </div>")
           $("#checkBtnDiv").html("")
           return
       } else {
@@ -62,14 +67,34 @@
           });
 
           $("#feedback").append(" is the correct answer.");
-            $('.progress-bar').css('width', question.progress[1]+'%').attr(question.progress[1]);   
-            $("#change_question").html("<div class = 'btn btn-dark' id = 'next-btn'> Next </div>")
+            $('.progress-bar').css('width', question.progress[1]+'%').attr(question.progress[1]); 
+            if (parseInt({{question.quiz_id}}) + 1 >=4){
+              $("#change_question").html("<div class = 'btn btn-dark' id = 'next-btn'> See Results </div>");
+             }  else {
+              $("#change_question").html("<div class = 'btn btn-dark' id = 'next-btn'> Next </div>")
+            }  
+            // $("#change_question").html("<div class = 'btn btn-dark' id = 'next-btn'> Next </div>")
             $("#checkBtnDiv").html("")
             
           },
         error: function(request, status, error){
         }
       });
+      wrongs = "{{question.topic}}"
+      $.ajax({
+            type: "POST",
+            url: "/wrong_topics",
+            dataType : "json",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify(wrongs),
+            success: function (response) {
+              },
+            error: function(request, status, error){
+              console.log(request)
+              console.log(status)
+              console.log(error)
+          }
+        })
     }
     
     $(document).ready(function () {
@@ -106,7 +131,7 @@
     })
     $(document).on('click','#next-btn', function(){
       id = parseInt(question.next_id);
-      if(id < 3){
+      if(id < 4){
         window.location.href = "/quiz2/" + id;
       }
       else
@@ -148,7 +173,8 @@
             {% for each in question.options_images %}
               {% set count.value = count.value + 1 %}
               <div class="col-md-3 dragOptions" id = "{{count.value}}">
-                  <img src={{each}}  class="img_format3">
+                <div id = "item_title"> {{each[0]}} </div>
+                  <img src={{each[1]}}  class="img_format3">
               </div>
             {% endfor %}
         </div>
