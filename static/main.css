@@ -202,6 +202,10 @@ hr {
   font-weight: bold;
 }
 #question_text{
+  font-size: xx-large; 
+  font-weight: bold;
+}
+#review{
   font-size: x-large; 
   font-weight: bold;
 }
@@ -324,4 +328,14 @@ hr.results{
   height: 2px;
   background-color: #FFFFFF;
   border: none;
+}
+
+#item_title{
+  padding-top: 2px;;
+  font-weight: bold;
+  text-align: center;
+}
+
+.dragOptions{
+  text-align: center;
 }
